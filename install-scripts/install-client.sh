@@ -7,33 +7,39 @@ displayTitle(){
 }
 
 yesOrNo() {
-	local message
-	local default
-	if [ "$2" = "y" ]; then message="$1 [Y/n]"; default='yes';
-	elif [ "$2" = "n" ]; then message="$1 [y/N]"; default='no';
-	else message="$1 [y/n]"; default=false;
-	fi
+    local message
+    local default
+    if [ "$2" = "y" ]; then
+      message="$1 [Y/n]"
+      default="yes";
+    elif [ "$2" = "n" ]; then
+      message="$1 [y/N]"
+      default="no";
+    else
+      message="$1 [y/n]"
+      default="";
+    fi
 
-	local yesNoAnswer=''
-	while [ -n $yesNoAnswer ]; do
-		read -p "$message " yesNoAnswer
-		case $yesNoAnswer in
-			[yY]|[yY][eE][sS])
-				echo 'yes'
-				exit
-			;;
-			[nN]|[nN][oO])
-				echo 'no'
-				exit
-			;;
-			'')
-				if $default; then
-					echo "$default"
-					exit
-				fi
-			;;
-		esac
-	done
+    local yesNoAnswer=""
+    while [ -n $yesNoAnswer ]; do
+        read -p "$message " yesNoAnswer
+        case $yesNoAnswer in
+            [yY]|[yY][eE][sS])
+                echo 'yes'
+                exit
+            ;;
+            [nN]|[nN][oO])
+                echo 'no'
+                exit
+            ;;
+            '')
+                if [ "$default" != "" ]; then
+                    echo "$default"
+                    exit
+                fi
+            ;;
+        esac
+    done
 }
 
 ##
