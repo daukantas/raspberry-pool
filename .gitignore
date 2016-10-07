@@ -4,7 +4,7 @@ public/**/*.css
 public/**/*.js
 !public/config
 src/config/local.yml
-lib/config/local.yml
+lib-node6/config/local.json
 
 /docs
 /dist

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.browser.js"],"names":[],"mappings":";;AAAA;;AACA","file":"index.browser.js","sourcesContent":["import './browser/loggers';\nimport './browser/app';\n"]}

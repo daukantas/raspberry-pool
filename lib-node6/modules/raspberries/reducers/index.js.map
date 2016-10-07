@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/modules/raspberries/reducers/index.js"],"names":["raspberries"],"mappings":";;;;;;AAAA;;AACA;;;;;;kBAEe,4BAAgB;AAC3BA;AAD2B,CAAhB,C","file":"index.js","sourcesContent":["import { combineReducers } from 'redux';\nimport raspberries from './raspberries';\n\nexport default combineReducers({\n    raspberries,\n});\n"]}

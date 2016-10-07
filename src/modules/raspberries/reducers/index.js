@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
 import raspberries from './raspberries';
 
-const rootReducer = combineReducers({
+export default combineReducers({
     raspberries,
 });
-
-export default rootReducer;

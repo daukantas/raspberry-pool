@@ -5,7 +5,7 @@ export const add = createAction('ADD_RASPBERRY', 'raspberry');
 export const update = createAction('UPDATE_RASPBERRY', raspberry => ({ id: raspberry.id, raspberry }));
 export const updateConfig = createAction(
     'UPDATE_RASPBERRY_CONFIG',
-    (raspberry, config) => ({ id: raspberry.id, config }),
+    (raspberry, config: Object) => ({ id: raspberry.id, config }),
 );
 export const remove = createAction('REMOVE_RASPBERRY', 'id');
 export const screenshotUpdated = createAction('SCREENSHOT_UPDATED', 'id,screenshotDate');
@@ -23,7 +23,7 @@ export const actionSent = createAction(
 export function changeConfig(raspberry, newConfig) {
     return async (dispatch, { websocket }) => {
         dispatch(saving(raspberry));
-        const configSaved = await websocket.emit('raspberry:changeConfig', raspberry.id, newConfig);
+        const configSaved: Object = await websocket.emit('raspberry:changeConfig', raspberry.id, newConfig);
         dispatch(updateConfig(raspberry, configSaved));
         dispatch(saved(raspberry, { data: { ...raspberry.data, config: configSaved } }));
     };

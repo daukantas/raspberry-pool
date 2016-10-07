@@ -34,11 +34,11 @@ function onConnection(socket) {
     subscribe(socket, 'raspberries', () => updateAll(raspberriesManager.getAll()));
 
     socket.on('raspberry:changeConfig', (id, config, callback) => {
-        const newConfig = raspberriesManager.changeConfig(id, config, callback);
+        const newConfig = raspberriesManager.changeConfig(id, config);
         if (!newConfig) {
-            callback();
+            callback('unknown raspberry');
         } else {
-            callback(newConfig);
+            callback(null, newConfig);
             const raspberry = raspberriesManager.getById(id);
             emitAction(socket.broadcast.to('raspberries'), updateConfig(raspberry, newConfig));
         }
@@ -59,9 +59,9 @@ function onConnection(socket) {
         logger.info('register raspberry', { mac, info });
         const newRaspberry = raspberriesManager.add(mac, info);
         if (!newRaspberry) {
-            callback(false);
+            callback(null, false);
         } else {
-            callback(newRaspberry);
+            callback(null, newRaspberry);
             emitAction(socket.broadcast.to('raspberries'), update(newRaspberry));
         }
     });

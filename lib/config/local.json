@@ -1,6 +1,0 @@
-{
-    "webSocket": {
-        "secure": false,
-        "port": 3333
-    }
-}

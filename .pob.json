@@ -1,0 +1,8 @@
+{
+  "src": "{src,!src/**/*.yml}",
+  "envs": [
+    "node6"
+  ],
+  "react": true,
+  "testing": false
+}
