@@ -5,13 +5,8 @@ import routerBuilder from '../routerBuilder';
 import Html from '../modules/common/layouts/Html';
 import controllers from '../modules/controllers.server';
 import { init as websocket } from '../websocket';
-import config from '../config.server';
 
-const app = new Alp({
-  srcDiname: `${__dirname}/..`,
-  packageDirname: `${__dirname}/../..`,
-  config,
-});
+const app = new Alp();
 
 app.start(async () => {
   // config / init

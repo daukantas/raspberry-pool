@@ -15,7 +15,7 @@
     "release": "pob-release"
   },
   "dependencies": {
-    "alp": "^8.2.0",
+    "alp": "^9.0.0",
     "alp-limosa": "^2.4.1",
     "alp-react-redux": "^5.0.1",
     "alp-websocket": "^3.3.2",
