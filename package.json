@@ -30,7 +30,7 @@
     "pob-release": "^2.1.2",
     "react": "^15.3.2",
     "react-alp-link": "^0.3.0",
-    "react-alp-subscribe-container": "^0.1.0",
+    "react-alp-subscribe-container": "^0.2.0",
     "react-alp-translate": "^0.3.0",
     "react-pure-render": "^1.0.2",
     "turaco-styl": "0.14.0"
