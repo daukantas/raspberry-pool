@@ -1,17 +1,17 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.updateFromAction = updateFromAction;
 function updateFromAction(action) {
-    switch (action) {
-        case 'self-update':
-            return { updating: true };
-        case 'screen-on':
-            return { nextExpectedScreenState: 'on' };
-        case 'screen-off':
-            return { nextExpectedScreenState: 'off' };
-    }
+  switch (action) {
+    case 'self-update':
+      return { updating: true };
+    case 'screen-on':
+      return { nextExpectedScreenState: 'on' };
+    case 'screen-off':
+      return { nextExpectedScreenState: 'off' };
+  }
 }
 //# sourceMappingURL=raspberryActionManager.js.map

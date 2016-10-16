@@ -161,24 +161,10 @@ cd $HOME
 mkdir $HOME/logs
 
 sudo npm install -g raspberry-client
-
-echo "# Setup supervisor for node client"
-echo '
-[program:node-raspberry-client]
-environment=NODE_ENV="production"
-command=raspberry-client --port='$SERVER_PORT' --host='$SERVER_HOSTNAME'
-autostart=true
-autorestart=true
-redirect_stderr=true
-stdout_logfile='$HOME'/logs/client.log
-user=pi
-' | sudo tee /etc/supervisor/conf.d/node-client.conf
+sudo rpi-cli install --host='$SERVER_HOSTNAME' --port='$SERVER_PORT' --userId='$USER_ID'
 
 # openbox started event
 echo 'NODE_ENV="production" rpi-cli display openbox-started' | sudo tee /etc/xdg/openbox/autostart
-
-sudo supervisorctl reread
-
 
 ##
 # Install libcec

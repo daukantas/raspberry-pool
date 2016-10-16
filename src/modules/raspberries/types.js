@@ -1,21 +1,24 @@
-export type RaspberryConfig = {
-    time?: number,
-    display?: string,
-    url?: string,
+export type RaspberryConfigType = {
+  time?: number,
+  display?: string,
+  url?: string,
 };
 
-export type RaspberryData = {
-    id: string,
-    name: string,
-    macAddresses: Array<string>,
-    config: RaspberryConfig,
+export type RaspberryDataType = {
+  id: string,
+  name: string,
+  macAddresses: Array<string>,
+  config: RaspberryConfigType,
+  owner: string,
+  organisation: ?string,
 };
 
-export type Raspberry = {
-    id: string,
-    data?: RaspberryData,
-    registered?: boolean,
-    online: boolean|string,
-    ip: string|null,
-    screenState: string|null,
+export type RaspberryType = {
+  id: string,
+  data?: RaspberryDataType,
+  registered?: boolean,
+  online: boolean | string,
+  externalIp: string | null,
+  ip: string | null,
+  screenState: string | null,
 };

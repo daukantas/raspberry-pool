@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.items = undefined;
 exports.getById = getById;
@@ -31,124 +31,132 @@ function slugify(string) {
 const dataPath = `${ __dirname }/../../../data`;
 const dataFilename = `${ dataPath }/raspberries.json`;
 
-const items = exports.items = _assert(JSON.parse((0, _fs.readFileSync)(dataFilename)), _tcombForked2.default.list(_types.RaspberryData), 'items');
+const items = exports.items = _assert(JSON.parse((0, _fs.readFileSync)(dataFilename)), _tcombForked2.default.list(_types.RaspberryDataType), 'items');
 const map = new Map(items.map(item => [item.id, item]));
 
 if (map.size !== items.length) {
-    throw new Error('Duplicated id');
+  throw new Error('Duplicated id');
 }
 
 function save() {
-    (0, _fs.writeFileSync)(dataFilename, JSON.stringify(items, null, 4));
+  (0, _fs.writeFileSync)(dataFilename, JSON.stringify(items, null, 4));
 }
 
 function getById(id) {
-    _assert(id, _tcombForked2.default.String, 'id');
+  _assert(id, _tcombForked2.default.String, 'id');
 
+  return _assert(function () {
     return map.get(id);
+  }.apply(this, arguments), _tcombForked2.default.maybe(_types.RaspberryDataType), 'return value');
 }
 
 function changeConfig(id, config) {
-    _assert(config, _types.RaspberryConfig, 'config');
+  _assert(id, _tcombForked2.default.String, 'id');
 
-    if (!map.has(id)) {
-        throw new Error('Invalid id');
-    }
+  _assert(config, _types.RaspberryConfigType, 'config');
 
-    // TODO configManager
-    config = Object.assign({}, {
-        time: Date.now(),
-        display: config.display || 'kweb3',
-        url: config.url.trim()
-    });
-    map.get(id).config = config;
-    save();
+  if (!map.has(id)) {
+    throw new Error('Invalid id');
+  }
 
-    return config;
+  // TODO configManager
+  config = Object.assign({}, {
+    time: Date.now(),
+    display: config.display || 'kweb3',
+    url: config.url.trim()
+  });
+  map.get(id).config = config;
+  save();
+
+  return config;
 }
+
 // ip should not be written
-function addNew(id, mac, name) {
-    _assert(id, _tcombForked2.default.String, 'id');
+function addNew(id, owner, macAddresses, name) {
+  _assert(id, _tcombForked2.default.String, 'id');
 
-    _assert(mac, _tcombForked2.default.String, 'mac');
+  _assert(owner, _tcombForked2.default.String, 'owner');
 
-    _assert(name, _tcombForked2.default.String, 'name');
+  _assert(macAddresses, _tcombForked2.default.list(_tcombForked2.default.String), 'macAddresses');
 
-    const newRaspberryItem = {
-        id,
-        name,
-        macAddresses: [mac],
-        config: {}
-    };
+  _assert(name, _tcombForked2.default.String, 'name');
 
-    if (map.has(newRaspberryItem.id)) {
-        throw new Error(`Already has id: ${ newRaspberryItem.id }`);
-    }
+  const newRaspberryItem = _assert({
+    id,
+    name,
+    macAddresses,
+    config: {},
+    owner
+  }, _types.RaspberryDataType, 'newRaspberryItem');
 
-    items.push(newRaspberryItem);
-    map.set(newRaspberryItem.id, newRaspberryItem);
-    save();
+  if (map.has(newRaspberryItem.id)) {
+    throw new Error(`Already has id: ${ newRaspberryItem.id }`);
+  }
 
-    return newRaspberryItem;
+  items.push(newRaspberryItem);
+  map.set(newRaspberryItem.id, newRaspberryItem);
+  save();
+
+  return newRaspberryItem;
 }
 
 function replaceMacAddresses(id, newMacAddresses) {
-    _assert(id, _tcombForked2.default.String, 'id');
+  _assert(id, _tcombForked2.default.String, 'id');
 
-    _assert(newMacAddresses, _tcombForked2.default.list(_tcombForked2.default.String), 'newMacAddresses');
+  _assert(newMacAddresses, _tcombForked2.default.list(_tcombForked2.default.String), 'newMacAddresses');
 
-    if (!map.has(id)) {
-        throw new Error('Invalid id');
-    }
+  if (!map.has(id)) {
+    throw new Error(`Invalid id: "${ id }"`);
+  }
 
-    map.get(id).macAddresses = newMacAddresses;
-    save();
+  map.get(id).macAddresses = newMacAddresses;
+  save();
 }
 
 function addMacAddress(id, newMacAddress) {
-    _assert(id, _tcombForked2.default.String, 'id');
+  _assert(id, _tcombForked2.default.String, 'id');
 
-    _assert(newMacAddress, _tcombForked2.default.String, 'newMacAddress');
+  _assert(newMacAddress, _tcombForked2.default.String, 'newMacAddress');
 
-    if (!map.has(id)) {
-        throw new Error('Invalid id');
-    }
+  if (!map.has(id)) {
+    throw new Error(`Invalid id: "${ id }"`);
+  }
 
-    map.get(id).macAddresses.push(newMacAddress);
-    save();
+  map.get(id).macAddresses.push(newMacAddress);
+  save();
 }
 
 function saveScreenshot(id, screenshot) {
-    _assert(id, _tcombForked2.default.String, 'id');
+  _assert(id, _tcombForked2.default.String, 'id');
 
-    _assert(screenshot, Buffer, 'screenshot');
+  _assert(screenshot, Buffer, 'screenshot');
 
-    (0, _fs.writeFileSync)(screenshotPath(id), screenshot);
+  (0, _fs.writeFileSync)(screenshotPath(id), screenshot);
 }
 
 function screenshotPath(id) {
-    _assert(id, _tcombForked2.default.String, 'id');
+  _assert(id, _tcombForked2.default.String, 'id');
 
-    return _assert(function () {
-        return `${ dataPath }/screenshot-${ id }.png`;
-    }.apply(this, arguments), _tcombForked2.default.String, 'return value');
+  return _assert(function () {
+    return `${ dataPath }/screenshot-${ id }.png`;
+  }.apply(this, arguments), _tcombForked2.default.String, 'return value');
 }
 
 function _assert(x, type, name) {
-    function message() {
-        return 'Invalid value ' + _tcombForked2.default.stringify(x) + ' supplied to ' + name + ' (expected a ' + _tcombForked2.default.getTypeName(type) + ')';
+  function message() {
+    return 'Invalid value ' + _tcombForked2.default.stringify(x) + ' supplied to ' + name + ' (expected a ' + _tcombForked2.default.getTypeName(type) + ')';
+  }
+
+  if (_tcombForked2.default.isType(type)) {
+    if (!type.is(x)) {
+      type(x, [name + ': ' + _tcombForked2.default.getTypeName(type)]);
+
+      _tcombForked2.default.fail(message());
     }
+  } else if (!(x instanceof type)) {
+    _tcombForked2.default.fail(message());
+  }
 
-    if (_tcombForked2.default.isType(type)) {
-        if (!type.is(x)) {
-            type(x, [name + ': ' + _tcombForked2.default.getTypeName(type)]);
-
-            _tcombForked2.default.fail(message());
-        }
-    } else if (!(x instanceof type)) {
-        _tcombForked2.default.fail(message());
-    }
-
-    return x;
+  return x;
 }
 //# sourceMappingURL=raspberriesData.server.js.map

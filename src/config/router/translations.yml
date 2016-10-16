@@ -9,3 +9,18 @@ common:
         screenshot:
             en: screenshot
             fr: screenshot
+
+        # auth
+        login:
+            en: login
+            fr: connexion
+        logout:
+            en: logout
+            fr: deconnexion
+        response:
+            en: response
+            fr: reponse
+
+        google:
+            en: google
+            fr: google

@@ -1,34 +1,35 @@
-import React, { Component, PropTypes } from 'react';
-import shouldPureComponentUpdate from 'react-pure-render/function';
-import Actions from './raspberry/ActionsComponent';
+import React, { PureComponent, PropTypes } from 'react';
 import T from 'react-alp-translate';
 import Link from 'react-alp-link';
+import Actions from './raspberry/ActionsComponent';
+import HeaderUser from '../../common/components/HeaderUserComponent';
 
-export default class HeaderComponent extends Component {
-    static propTypes = {
-        raspberries: PropTypes.array,
-        sendAction: PropTypes.func.isRequired,
-    };
+export default class HeaderComponent extends PureComponent {
+  static propTypes = {
+    raspberries: PropTypes.array,
+    sendAction: PropTypes.func.isRequired,
+  };
 
-    static contextTypes = {
-        context: PropTypes.object.isRequired,
-    };
+  static contextTypes = {
+    context: PropTypes.object.isRequired,
+  };
 
-    shouldComponentUpdate = shouldPureComponentUpdate;
+  render() {
+    const { raspberries, sendAction } = this.props;
 
-    render() {
-        const { raspberries, sendAction } = this.props;
-
-        return (<header className="header">
-            <div className="left">
-                <T id="raspberry-pool.title" />
-            </div>
-            <div className="right">
-                <Link to="default" params={{ controller: 'install' }} className="button flat">
-                    <T id="header.installClientLink" />
-                </Link>
-                <Actions raspberries={raspberries} sendAction={sendAction} />
-            </div>
-        </header>);
-    }
+    return (<header className="header row space-between">
+      <div>
+        <div className="logo" />
+      </div>
+      <div className="end">
+        <Link to="default" params={{ controller: 'install' }} className="button flat">
+          <T id="header.installClientLink" />
+        </Link>
+        <Actions flat raspberries={raspberries} sendAction={sendAction} />
+      </div>
+      <div className="end">
+        <HeaderUser />
+      </div>
+    </header>);
+  }
 }

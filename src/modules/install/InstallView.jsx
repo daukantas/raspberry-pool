@@ -1,32 +1,55 @@
 import { PropTypes } from 'react';
+import User from 'react-alp-user';
+import Link from 'react-alp-link';
 import Header from '../common/components/install/HeaderComponent';
 
-InstallView.propTypes = {
-    url: PropTypes.string.isRequired,
-};
+function InstallView({ hostname, websocketPort }, { setTitle, setMeta }) {
+  setTitle('How to install raspberry client');
+  setMeta('description', 'Install a raspberry to make it work with raspberry-pool');
 
-InstallView.contextTypes = {
-    setTitle: PropTypes.func.isRequired,
-    setMeta: PropTypes.func.isRequired,
-};
-
-export default function InstallView({ url }, { setTitle, setMeta }) {
-    setTitle('How to install raspberry client');
-    setMeta('description', 'Install a raspberry to make it work with raspberry-pool');
-
-    return (<div>
+  return (
+    <User>{user => (
+      <div>
         <Header />
         <div className="install-picture" />
 
         <div className="container-fixed">
-            <h1 className="page-title">How to install raspberry-client on your raspberry ?</h1>
+          <h1 className="page-title">How to install raspberry-client on your raspberry ?</h1>
 
-            <h2>1. Install raspbian (wheezy or jessie)</h2>
+          <ol className="list block">
+            <li>1. Install raspbian (wheezy or jessie)</li>
+            <li>
+              2. Install the client
 
-            <h2>2. Install your new raspberry</h2>
-            <pre>
-                {`curl ${url}/install-scripts/install-raspberry.sh | sh`}
-            </pre>
+              <div>All-in-one install:</div>
+              <pre>
+                USER_ID={user ? `'${user.id}'` : <Link to="login">Please login !</Link>}
+                {` curl ${hostname}/install-scripts/install-raspberry.sh | sh`}
+              </pre>
+
+              <div>Or install node and the client manually:</div>
+              <pre>
+                curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -{'\n'}
+                sudo apt-get install -y nodejs scrot{'\n'}
+                sudo npm install -g raspberry-client{'\n'}
+                sudo rpi-cli install --userId={user ? `'${user.id}'` : <Link to="login">Please login !</Link>} --host={`'${hostname}'`} --port={websocketPort}
+              </pre>
+            </li>
+          </ol>
         </div>
-    </div>);
+      </div>
+    )}</User>
+  );
 }
+
+InstallView.propTypes = {
+  hostname: PropTypes.string.isRequired,
+  websocketPort: PropTypes.number.isRequired,
+};
+
+InstallView.contextTypes = {
+  setTitle: PropTypes.func.isRequired,
+  setMeta: PropTypes.func.isRequired,
+};
+
+export default InstallView;

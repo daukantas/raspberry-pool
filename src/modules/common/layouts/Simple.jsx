@@ -1,22 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class Html extends Component {
-    static propTypes = {
-        title: PropTypes.string,
-        description: PropTypes.string,
-        body: PropTypes.string.isRequired,
-        preBody: PropTypes.element,
-        postBody: PropTypes.element,
-        context: PropTypes.object.isRequired,
-    };
+  static propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    body: PropTypes.string.isRequired,
+    preBody: PropTypes.element,
+    postBody: PropTypes.element,
+    context: PropTypes.object.isRequired,
+  };
 
-    static defaultProps = {
-        title: '',
-        description: '',
-    };
+  static defaultProps = {
+    title: '',
+    description: '',
+  };
 
-    render() {
-        return (
+  render() {
+    return (
             <html>
                 <head>
                     <meta charSet="utf-8" />
@@ -34,5 +34,5 @@ export default class Html extends Component {
                 </body>
             </html>
         );
-    }
+  }
 }

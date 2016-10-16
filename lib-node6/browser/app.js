@@ -14,7 +14,7 @@ var _alpReactRedux2 = _interopRequireDefault(_alpReactRedux);
 
 var _websocket = require('../websocket');
 
-var _controllers = require('../modules/controllers.browser');
+var _controllers = require('../modules/controllers');
 
 var _controllers2 = _interopRequireDefault(_controllers);
 

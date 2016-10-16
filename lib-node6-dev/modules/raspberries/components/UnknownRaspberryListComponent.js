@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 var _jsxFileName = 'modules/raspberries/components/UnknownRaspberryListComponent.jsx';
 
@@ -20,60 +20,60 @@ var _UnknownRaspberryComponent2 = _interopRequireDefault(_UnknownRaspberryCompon
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class UnknownRaspberryListComponent extends _react.Component {
-    constructor() {
-        var _temp;
+  constructor() {
+    var _temp;
 
-        return _temp = super(...arguments), this.shouldComponentUpdate = _function2.default, _temp;
+    return _temp = super(...arguments), this.shouldComponentUpdate = _function2.default, _temp;
+  }
+
+  render() {
+    var _props = this.props;
+    const raspberries = _props.raspberries;
+    const offlineRaspberries = _props.offlineRaspberries;
+    const registerUnknown = _props.registerUnknown;
+    const sendAction = _props.sendAction;
+
+
+    if (!raspberries.length) {
+      return null;
     }
 
-    render() {
-        var _props = this.props;
-        const raspberries = _props.raspberries;
-        const offlineRaspberries = _props.offlineRaspberries;
-        const registerUnknown = _props.registerUnknown;
-        const sendAction = _props.sendAction;
-
-
-        if (!raspberries.length) {
-            return null;
+    return _react2.default.createElement(
+      'ul',
+      { className: 'raspberry-list', __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
         }
-
-        return _react2.default.createElement(
-            'ul',
-            { className: 'raspberry-list', __self: this,
-                __source: {
-                    fileName: _jsxFileName,
-                    lineNumber: 22
-                }
-            },
-            raspberries.map(raspberry => _react2.default.createElement(
-                'li',
-                { key: raspberry.id, className: 'raspberry-item', __self: this,
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 23
-                    }
-                },
-                _react2.default.createElement(_UnknownRaspberryComponent2.default, {
-                    raspberry: raspberry,
-                    offlineRaspberries: offlineRaspberries,
-                    registerUnknown: registerUnknown,
-                    sendAction: sendAction,
-                    __self: this,
-                    __source: {
-                        fileName: _jsxFileName,
-                        lineNumber: 24
-                    }
-                })
-            ))
-        );
-    }
+      },
+      raspberries.map(raspberry => _react2.default.createElement(
+        'li',
+        { key: raspberry.id, className: 'raspberry-item', __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 23
+          }
+        },
+        _react2.default.createElement(_UnknownRaspberryComponent2.default, {
+          raspberry: raspberry,
+          offlineRaspberries: offlineRaspberries,
+          registerUnknown: registerUnknown,
+          sendAction: sendAction,
+          __self: this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 24
+          }
+        })
+      ))
+    );
+  }
 }
 exports.default = UnknownRaspberryListComponent;
 UnknownRaspberryListComponent.propTypes = {
-    raspberries: _react.PropTypes.array.isRequired,
-    offlineRaspberries: _react.PropTypes.array.isRequired,
-    registerUnknown: _react.PropTypes.func.isRequired,
-    sendAction: _react.PropTypes.func.isRequired
+  raspberries: _react.PropTypes.array.isRequired,
+  offlineRaspberries: _react.PropTypes.array.isRequired,
+  registerUnknown: _react.PropTypes.func.isRequired,
+  sendAction: _react.PropTypes.func.isRequired
 };
 //# sourceMappingURL=UnknownRaspberryListComponent.js.map

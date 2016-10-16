@@ -3,3 +3,11 @@ include:
 common:
     applicationName: 'Raspberry Pool'
     availableLanguages: [ en, fr ]
+
+server:
+    authentication:
+        secretKey: T'@xrj-@œw1'[]0=-12040=d9``znxcij//68
+    db:
+        rethinkdb:
+            database: raspberrypool
+

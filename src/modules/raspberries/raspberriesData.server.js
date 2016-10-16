@@ -1,5 +1,5 @@
 import { readFileSync, writeFileSync } from 'fs';
-import type { RaspberryData, RaspberryConfig } from './types';
+import type { RaspberryDataType, RaspberryConfigType } from './types';
 /* import { slugify as _slugify } from 'transliteration';
 
 function slugify(string) {
@@ -9,79 +9,81 @@ function slugify(string) {
 const dataPath = `${__dirname}/../../../data`;
 const dataFilename = `${dataPath}/raspberries.json`;
 
-export const items: Array<RaspberryData> = JSON.parse(readFileSync(dataFilename));
+export const items: Array<RaspberryDataType> = JSON.parse(readFileSync(dataFilename));
 const map = new Map(items.map(item => [item.id, item]));
 
 if (map.size !== items.length) {
-    throw new Error('Duplicated id');
+  throw new Error('Duplicated id');
 }
 
 function save() {
-    writeFileSync(dataFilename, JSON.stringify(items, null, 4));
+  writeFileSync(dataFilename, JSON.stringify(items, null, 4));
 }
 
-export function getById(id: string) {
-    return map.get(id);
+export function getById(id: string): ?RaspberryDataType {
+  return map.get(id);
 }
 
-export function changeConfig(id, config: RaspberryConfig) {
-    if (!map.has(id)) {
-        throw new Error('Invalid id');
-    }
+export function changeConfig(id: string, config: RaspberryConfigType) {
+  if (!map.has(id)) {
+    throw new Error('Invalid id');
+  }
 
     // TODO configManager
-    config = Object.assign({}, {
-        time: Date.now(),
-        display: config.display || 'kweb3',
-        url: config.url.trim(),
-    });
-    map.get(id).config = config;
-    save();
+  config = Object.assign({}, {
+    time: Date.now(),
+    display: config.display || 'kweb3',
+    url: config.url.trim(),
+  });
+  map.get(id).config = config;
+  save();
 
-    return config;
+  return config;
 }
+
 // ip should not be written
-export function addNew(id: string, mac: string, name: string) {
-    const newRaspberryItem = {
-        id,
-        name,
-        macAddresses: [mac],
-        config: {},
-    };
+export function addNew(id: string, owner: string, macAddresses: Array<string>, name: string) {
+  const newRaspberryItem: RaspberryDataType = {
+    id,
+    name,
+    macAddresses,
+    config: {},
+    owner,
+  };
 
-    if (map.has(newRaspberryItem.id)) {
-        throw new Error(`Already has id: ${newRaspberryItem.id}`);
-    }
+  if (map.has(newRaspberryItem.id)) {
+    throw new Error(`Already has id: ${newRaspberryItem.id}`);
+  }
 
-    items.push(newRaspberryItem);
-    map.set(newRaspberryItem.id, newRaspberryItem);
-    save();
+  items.push(newRaspberryItem);
+  map.set(newRaspberryItem.id, newRaspberryItem);
+  save();
 
-    return newRaspberryItem;
+  return newRaspberryItem;
 }
 
 export function replaceMacAddresses(id: string, newMacAddresses: Array<string>) {
-    if (!map.has(id)) {
-        throw new Error('Invalid id');
-    }
+  if (!map.has(id)) {
+    throw new Error(`Invalid id: "${id}"`);
+  }
 
-    map.get(id).macAddresses = newMacAddresses;
-    save();
+  map.get(id).macAddresses = newMacAddresses;
+  save();
 }
 
 export function addMacAddress(id: string, newMacAddress: string) {
-    if (!map.has(id)) {
-        throw new Error('Invalid id');
-    }
+  if (!map.has(id)) {
+    throw new Error(`Invalid id: "${id}"`);
+  }
 
-    map.get(id).macAddresses.push(newMacAddress);
-    save();
+  map.get(id).macAddresses.push(newMacAddress);
+  save();
 }
 
 export function saveScreenshot(id: string, screenshot: Buffer) {
-    writeFileSync(screenshotPath(id), screenshot);
+  writeFileSync(screenshotPath(id), screenshot);
 }
 
 export function screenshotPath(id: string): string {
-    return `${dataPath}/screenshot-${id}.png`;
+  return `${dataPath}/screenshot-${id}.png`;
 }

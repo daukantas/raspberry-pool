@@ -1,68 +1,100 @@
+import Logger from 'nightingale/src';
+import { emitAction } from 'alp-react-redux/src';
+import { subscribe } from 'alp-websocket/src';
+import type { UserType } from 'alp-auth/types';
 import * as raspberriesManager from '../raspberriesManager.server';
-import Logger from 'nightingale';
 import { updateAll, update, updateConfig } from '../actions/raspberry';
-import { emitAction } from 'alp-react-redux';
-import { subscribe } from 'alp-websocket';
+import type { RaspberryType } from '../types';
 
 const logger = new Logger('app.websocket.raspberries');
 
 let clientsCount = 0;
 let clientNs;
 
-export default function init(io) {
-    clientNs = io.of('client', socket => onConnection(socket));
+export default function init(io, app) {
+  clientNs = io.of('client', socket => onConnection(socket, app));
 }
 
-export function broadcastAction(action: Object) {
-    logger.info('broadcast', action);
-    emitAction(clientNs.to('raspberries'), action);
+export function broadcastAction(raspberry: RaspberryType, action: Object) {
+  const room = !raspberry.data ? `id#${raspberry.userId}` : (
+    raspberry.data.organisation || `id#${raspberry.data.owner}`
+  );
+
+  logger.info('broadcast', { room, ...action });
+  if (room) {
+    emitAction(clientNs.to(`raspberries_${room}`), action);
+  }
 }
 
-function onConnection(socket) {
-    if (clientsCount++ === 0) {
-        raspberriesManager.raspberriesClientsConnected();
+function onConnection(socket, app) {
+  clientsCount += 1;
+  logger.info('connected', { clientsCount });
+
+  const user: ?UserType = app.websocket.users.get(socket.client.id);
+
+  if (!user) return;
+
+  raspberriesManager.raspberriesClientsConnected(user.id, user.emailDomains);
+
+  socket.on('disconnect', () => {
+    if (--clientsCount === 0) {
+      raspberriesManager.raspberriesClientsDisonnected(user.id, user.emailDomains);
     }
-    logger.info('connected', { clientsCount });
+    logger.info('disconnected', { clientsCount });
+  });
 
-    socket.on('disconnect', () => {
-        if (--clientsCount === 0) {
-            raspberriesManager.raspberriesClientsDisonnected();
+  subscribe(
+    socket,
+    'raspberries',
+    () => {
+      socket.join(`raspberries_id#${user.id}`);
+      user.emailDomains.forEach(domain => socket.join(`raspberries_${domain}`));
+      emitAction(socket, updateAll(raspberriesManager.getAll(user)));
+    },
+    () => {
+      socket.leave(`raspberries_id#${user.id}`);
+      user.emailDomains.forEach(domain => socket.leave(`raspberries_${domain}`));
+    },
+  );
+
+  socket.on('raspberry:changeConfig', (id: string, config, callback: Function) => {
+    console.log('user', user);
+    const raspberry = raspberriesManager.getByIdForUser(user, id);
+    if (!raspberry) {
+      logger.warn('changeConfig: invalid raspberry', { id });
+      callback('invalid raspberry');
+      return;
+    }
+    const newConfig = raspberriesManager.changeConfig(raspberry, config);
+    if (!newConfig) {
+      callback('invalid raspberry');
+    } else {
+      callback(null, newConfig);
+      emitAction(socket.broadcast.to('raspberries'), updateConfig(raspberry, newConfig));
+    }
+  });
+
+  socket.on('raspberry:sendAction', (ids: Array<string>, action: string, callback: Function) => {
+    logger.info('sendAction raspberry', { ids, action });
+    ids
+      .map(raspberriesManager.getByIdForUser.bind(null, user))
+      .filter(Boolean)
+      .forEach((raspberry: RaspberryType) => {
+        if (raspberriesManager.sendAction(raspberry, action)) {
+          emitAction(socket.broadcast.to('raspberries'), update(raspberry));
         }
-        logger.info('disconnected', { clientsCount });
-    });
+      });
+    callback();
+  });
 
-    subscribe(socket, 'raspberries', () => updateAll(raspberriesManager.getAll()));
-
-    socket.on('raspberry:changeConfig', (id, config, callback) => {
-        const newConfig = raspberriesManager.changeConfig(id, config);
-        if (!newConfig) {
-            callback('unknown raspberry');
-        } else {
-            callback(null, newConfig);
-            const raspberry = raspberriesManager.getById(id);
-            emitAction(socket.broadcast.to('raspberries'), updateConfig(raspberry, newConfig));
-        }
-    });
-
-    socket.on('raspberry:sendAction', (ids, action, callback) => {
-        logger.info('sendAction raspberry', { ids, action });
-        ids.forEach(id => {
-            const raspberry = raspberriesManager.sendAction(id, action);
-            if (raspberry) {
-                emitAction(socket.broadcast.to('raspberries'), update(raspberry));
-            }
-        });
-        callback();
-    });
-
-    socket.on('raspberry:registerUnknown', (mac, info, callback) => {
-        logger.info('register raspberry', { mac, info });
-        const newRaspberry = raspberriesManager.add(mac, info);
-        if (!newRaspberry) {
-            callback(null, false);
-        } else {
-            callback(null, newRaspberry);
-            emitAction(socket.broadcast.to('raspberries'), update(newRaspberry));
-        }
-    });
+  socket.on('raspberry:registerUnknown', (id: string, info, callback: Function) => {
+    logger.info('register raspberry', { id, info });
+    const newRaspberry = raspberriesManager.add(id, user.id, info);
+    if (!newRaspberry) {
+      callback(null, false);
+    } else {
+      callback(null, newRaspberry);
+      broadcastAction(newRaspberry, update(newRaspberry));
+    }
+  });
 }

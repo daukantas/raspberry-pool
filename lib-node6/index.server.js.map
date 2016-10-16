@@ -1,1 +1,1 @@
-{"version":3,"sources":["../src/index.server.js"],"names":[],"mappings":";;AAAA;;AACA","file":"index.server.js","sourcesContent":["import './server/loggers';\nimport './server/app';\n"]}
+{"version":3,"sources":["../src/index.server.js"],"names":[],"mappings":";;AAAA;;AACA;;AACA","file":"index.server.js","sourcesContent":["import 'alp-node/fetch';\nimport './server/loggers';\nimport './server/app';\n"]}

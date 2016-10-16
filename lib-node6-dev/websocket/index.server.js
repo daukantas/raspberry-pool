@@ -21,7 +21,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function init(app) {
   const io = (0, _alpWebsocket2.default)(app);
-  (0, _raspberries2.default)(io);
-  (0, _raspberryClient2.default)(io);
+  (0, _raspberries2.default)(io, app);
+  (0, _raspberryClient2.default)(io, app);
 }
 //# sourceMappingURL=index.server.js.map

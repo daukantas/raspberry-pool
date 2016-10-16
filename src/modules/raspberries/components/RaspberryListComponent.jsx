@@ -3,20 +3,20 @@ import shouldPureComponentUpdate from 'react-pure-render/function';
 import Raspberry from './RaspberryComponent';
 
 export default class RaspberryListComponent extends Component {
-    static propTypes = {
-        raspberries: PropTypes.array.isRequired,
-        changeConfig: PropTypes.func.isRequired,
-        sendAction: PropTypes.func.isRequired,
-    };
+  static propTypes = {
+    raspberries: PropTypes.array.isRequired,
+    changeConfig: PropTypes.func.isRequired,
+    sendAction: PropTypes.func.isRequired,
+  };
 
-    shouldComponentUpdate = shouldPureComponentUpdate;
+  shouldComponentUpdate = shouldPureComponentUpdate;
 
-    render() {
-        const { raspberries, changeConfig, sendAction } = this.props;
-        return (<ul className="raspberry-list">
+  render() {
+    const { raspberries, changeConfig, sendAction } = this.props;
+    return (<ul className="raspberry-list">
             {raspberries.map(raspberry => <li key={raspberry.id} className="raspberry-item">
                 <Raspberry raspberry={raspberry} changeConfig={changeConfig} sendAction={sendAction} />
             </li>)}
         </ul>);
-    }
+  }
 }

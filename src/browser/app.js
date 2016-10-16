@@ -3,7 +3,7 @@ import Alp from 'alp';
 import router from 'alp-limosa';
 import reactredux from 'alp-react-redux';
 import { init as websocket } from '../websocket';
-import controllers from '../modules/controllers.browser';
+import controllers from '../modules/controllers';
 import routerBuilder from '../routerBuilder';
 
 import * as moduleDescriptors from '../modules';

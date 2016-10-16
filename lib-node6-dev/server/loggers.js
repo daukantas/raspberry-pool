@@ -12,13 +12,13 @@ var _nightingaleErrorProcessor2 = _interopRequireDefault(_nightingaleErrorProces
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _nightingale.addGlobalProcessor)(_nightingaleErrorProcessor2.default);
-
 (0, _nightingale.configure)([{
-  // no patterns: default
-  handlers: [new _nightingaleConsole2.default(_nightingale.levels.INFO)]
+  processors: [_nightingaleErrorProcessor2.default]
 }, {
-  patterns: ['app', 'app.*'],
-  handlers: [new _nightingaleConsole2.default(_nightingale.levels.DEBUG)]
+  pattern: /^app/,
+  handlers: [new _nightingaleConsole2.default(_nightingale.levels.DEBUG)],
+  stop: true
+}, {
+  handlers: [new _nightingaleConsole2.default(_nightingale.levels.INFO)]
 }]);
 //# sourceMappingURL=loggers.js.map

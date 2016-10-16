@@ -1,16 +1,17 @@
-import { configure, levels, addGlobalProcessor } from 'nightingale';
-import ConsoleHandler from 'nightingale-browser-console';
-import errorProcessor from 'nightingale-error-processor';
-
-addGlobalProcessor(errorProcessor);
+import { configure, levels } from 'nightingale/src';
+import ConsoleHandler from 'nightingale-console/src';
+import errorProcessor from 'nightingale-error-processor/src';
 
 configure([
   {
-    // no patterns: default
-    handlers: [new ConsoleHandler(levels.INFO)],
+    processors: [errorProcessor],
   },
   {
-    patterns: ['app', 'app.*'],
+    pattern: /^app/,
     handlers: [new ConsoleHandler(levels.DEBUG)],
+    stop: true,
+  },
+  {
+    handlers: [new ConsoleHandler(levels.INFO)],
   },
 ]);

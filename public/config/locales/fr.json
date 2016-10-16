@@ -1,6 +1,11 @@
 {
     "raspberry-pool.title": "Raspberry Pool",
-    "header.installClientLink": "Installer le client",
+    "header": {
+        "login": "Connexion",
+        "logout": "Deconnexion",
+        "installClientLink": "Installer le client"
+    },
+    "home.notConnected.title": "Gérez votre pool de raspberry depuis un endroit unique !",
     "unknownRaspberry.title": "Ajouter une nouvelle Raspberry",
     "unknownRaspberry.addToExisting": "Ajouter à une raspberry existante",
     "unknownRaspberry.add": "Ajouter",

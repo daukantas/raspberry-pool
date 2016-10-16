@@ -1,5 +1,7 @@
 'use strict';
 
+require('alp-node/fetch');
+
 require('./server/loggers');
 
 require('./server/app');

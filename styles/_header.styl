@@ -1,12 +1,18 @@
 .header
-    background #f9f3eb
-    z-depth-1()
-    padding .5rem
-    display flex
-    justify-content space-between
+  background $header-background
+  z-depth-1()
+  display flex
+  justify-content space-between
+  height 40px
 
-    .left
-        align-self stretch
+  .logo
+    display inline-block
+    background url('./logo-80.png')
+    background-size 60px 40px
+    width 60px
+    height 40px
 
-    .right
-        align-self flex-end
+  .dropdown::after
+    border-left none
+    color $primary-color
+
