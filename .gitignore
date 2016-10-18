@@ -6,7 +6,8 @@ public/**/*.gz
 public/**/*.lzma
 !public/config
 src/config/local.yml
-lib-node6/config/local.json
+/lib-node6/config/local.json
+/lib-node6-dev
 
 /docs
 /dist
