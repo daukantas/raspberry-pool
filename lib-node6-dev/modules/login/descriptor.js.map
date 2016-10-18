@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/modules/login/descriptor.js"],"names":["default","identifier"],"mappings":";;;;;;;;;;;8CACSA,O;;;;;;AADF,MAAMC,kCAAa,OAAnB","file":"descriptor.js","sourcesContent":["export const identifier = 'login';\nexport { default as View } from './LoginView';\n"]}

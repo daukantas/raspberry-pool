@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/modules/install/controller.js"],"names":[],"mappings":";;;;;;AACA","file":"controller.js","sourcesContent":["import browserController from './controller.browser';\nimport serverController from './controller.server';\n\nexport default BROWSER ? browserController : serverController;\n"]}
