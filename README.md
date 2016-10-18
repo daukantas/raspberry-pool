@@ -51,7 +51,7 @@ Create supervisor config file
 
 ```
 [program:node-raspberry-pool]
-command=node --harmony /home/raspberry-pool/prod/current/
+command=node --harmony /home/raspberry-pool/prod/current/lib-node6/index.server.js
 environment=NODE_ENV="production"
 autostart=true
 autorestart=true
@@ -68,8 +68,7 @@ Install dependencies and build
 ```
 cd web
 npm install
-./node_modules/.bin/jspm install
-make build
+make build-prod
 ```
 
 Start the servers
