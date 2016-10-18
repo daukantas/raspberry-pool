@@ -1,3 +1,9 @@
+### v5.0.0-beta.2
+
+- [`4abfdf5`](https://github.com/christophehurpeau/raspberry-pool/commit/4abfdf55ecef7f86972f7319debdc9fed32a9b9f) gitignore (Christophe Hurpeau)
+- [`d4e8073`](https://github.com/christophehurpeau/raspberry-pool/commit/d4e8073ed3921b0127d202c8b0c14c3494e869cb) remove lib-node6-dev (Christophe Hurpeau)
+- [`52297ad`](https://github.com/christophehurpeau/raspberry-pool/commit/52297ad6a03ac4391bce183a68e778657b7e7005) index.js (Christophe Hurpeau)
+
 ### v5.0.0-beta.1
 
 - [`dca7f4d`](https://github.com/christophehurpeau/raspberry-pool/commit/dca7f4dc628eaff7cd399771c400d5f073e53b45) disconnected style (Christophe Hurpeau)
