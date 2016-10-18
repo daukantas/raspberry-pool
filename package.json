@@ -24,7 +24,7 @@
     "alp-limosa": "^2.4.1",
     "alp-node": "^0.24.0",
     "alp-react-redux": "^5.1.0",
-    "alp-websocket": "^3.5.0",
+    "alp-websocket": "^3.6.0",
     "babel-regenerator-runtime": "^6.5.0",
     "fody-html-layout": "^4.1.0",
     "koa-sendfile": "^2.0.0",
