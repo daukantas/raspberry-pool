@@ -3,6 +3,7 @@ import InstallView from './InstallView';
 
 export default newController({
   index(ctx) {
-    ctx.render({ View: InstallView }, { url: ctx.request.origin });
+    const websocketPort = ctx.app.config.get('webSocket').get('port');
+    ctx.render({ View: InstallView }, { hostname: ctx.request.origin, websocketPort });
   },
 });

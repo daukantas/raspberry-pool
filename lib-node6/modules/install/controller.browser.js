@@ -14,7 +14,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = (0, _alp.newController)({
   index(ctx) {
-    ctx.render({ View: _InstallView2.default }, { url: ctx.request.origin });
+    const websocketPort = ctx.app.config.get('webSocket').get('port');
+    ctx.render({ View: _InstallView2.default }, { hostname: ctx.request.origin, websocketPort });
   }
 });
 //# sourceMappingURL=controller.browser.js.map

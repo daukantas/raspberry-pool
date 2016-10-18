@@ -3,7 +3,10 @@ import User from 'react-alp-user';
 import Link from 'react-alp-link';
 import Header from '../common/components/install/HeaderComponent';
 
-function InstallView({ hostname, websocketPort }, { setTitle, setMeta }) {
+function InstallView(
+  { hostname, websocketPort }: { hostname: string, websocketPort: number },
+  { setTitle, setMeta },
+) {
   setTitle('How to install raspberry client');
   setMeta('description', 'Install a raspberry to make it work with raspberry-pool');
 
