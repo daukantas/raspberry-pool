@@ -1,3 +1,8 @@
+### v5.0.0-beta.3
+
+- [`e870714`](https://github.com/christophehurpeau/raspberry-pool/commit/e8707145b206ec36b37fb1a46f5a5e366b79a37a) update readme and remove index.js (Christophe Hurpeau)
+- [`55cf12f`](https://github.com/christophehurpeau/raspberry-pool/commit/55cf12f8c8369791145ce3382895313b15a52c88) chore(package): alp-websocket@^3.6.0 (Christophe Hurpeau)
+
 ### v5.0.0-beta.2
 
 - [`4abfdf5`](https://github.com/christophehurpeau/raspberry-pool/commit/4abfdf55ecef7f86972f7319debdc9fed32a9b9f) gitignore (Christophe Hurpeau)
