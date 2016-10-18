@@ -19,14 +19,14 @@ export default class NoConfigView extends Component {
 
     const { url, ip } = this.props;
     return (<div className="no-config">
-            <div className="install-picture" />
+      <div className="install-picture" />
 
-            <div className="container-fixed">
-                <h1 className="page-title">Not configured</h1>
+      <div className="container-fixed">
+        <h1 className="page-title">Not configured</h1>
 
-                <p>Go to <a href={url}>{url}</a> to configure this raspberry</p>
-                {!ip ? '' : <p className="ip">IP: {ip}</p>}
-            </div>
-        </div>);
+        <p>Go to <a href={url}>{url}</a> to configure this raspberry</p>
+        {!ip ? '' : <p className="ip">IP: {ip}</p>}
+      </div>
+    </div>);
   }
 }

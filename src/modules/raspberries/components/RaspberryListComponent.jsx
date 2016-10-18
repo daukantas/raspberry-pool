@@ -14,9 +14,9 @@ export default class RaspberryListComponent extends Component {
   render() {
     const { raspberries, changeConfig, sendAction } = this.props;
     return (<ul className="raspberry-list">
-            {raspberries.map(raspberry => <li key={raspberry.id} className="raspberry-item">
-                <Raspberry raspberry={raspberry} changeConfig={changeConfig} sendAction={sendAction} />
-            </li>)}
-        </ul>);
+      {raspberries.map(raspberry => <li key={raspberry.id} className="raspberry-item">
+        <Raspberry raspberry={raspberry} changeConfig={changeConfig} sendAction={sendAction} />
+      </li>)}
+    </ul>);
   }
 }

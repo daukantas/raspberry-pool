@@ -8,8 +8,9 @@ const MIN_SUPPORTED_VERSION = '4.1.0';
 const clients = new Map();
 let ns;
 
-export function emit(mac: string, eventName: string, ...data?: Array<any>) {
+export function emit(mac: string | boolean, eventName: string, ...data?: Array<any>) {
   logger.debug('emit', { mac, eventName, data });
+  if (!mac) return;
   if (!clients.has(mac)) {
     logger.warn('cannot send message');
     return;

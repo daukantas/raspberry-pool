@@ -6,19 +6,19 @@ var _nightingaleBrowserConsole = require('nightingale-browser-console');
 
 var _nightingaleBrowserConsole2 = _interopRequireDefault(_nightingaleBrowserConsole);
 
-var _nightingaleErrorProcessor = require('nightingale-error-processor');
-
-var _nightingaleErrorProcessor2 = _interopRequireDefault(_nightingaleErrorProcessor);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _nightingale.addGlobalProcessor)(_nightingaleErrorProcessor2.default);
+// import errorProcessor from 'nightingale-error-processor/src';
 
-(0, _nightingale.configure)([{
-  // no patterns: default
-  handlers: [new _nightingaleBrowserConsole2.default(_nightingale.levels.INFO)]
+(0, _nightingale.configure)([
+// {
+//   processors: [errorProcessor],
+// },
+{
+  pattern: /^app/,
+  handlers: [new _nightingaleBrowserConsole2.default(_nightingale.levels.DEBUG)],
+  stop: true
 }, {
-  patterns: ['app', 'app.*'],
-  handlers: [new _nightingaleBrowserConsole2.default(_nightingale.levels.DEBUG)]
+  handlers: [new _nightingaleBrowserConsole2.default(_nightingale.levels.INFO)]
 }]);
 //# sourceMappingURL=loggers.js.map

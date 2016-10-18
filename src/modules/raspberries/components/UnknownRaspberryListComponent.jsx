@@ -20,14 +20,14 @@ export default class UnknownRaspberryListComponent extends Component {
     }
 
     return (<ul className="raspberry-list">
-            {raspberries.map(raspberry => <li key={raspberry.id} className="raspberry-item">
-                <UnknownRaspberry
-                  raspberry={raspberry}
-                  offlineRaspberries={offlineRaspberries}
-                  registerUnknown={registerUnknown}
-                  sendAction={sendAction}
-                />
-            </li>)}
-        </ul>);
+      {raspberries.map(raspberry => <li key={raspberry.id} className="raspberry-item">
+        <UnknownRaspberry
+          raspberry={raspberry}
+          offlineRaspberries={offlineRaspberries}
+          registerUnknown={registerUnknown}
+          sendAction={sendAction}
+        />
+      </li>)}
+    </ul>);
   }
 }

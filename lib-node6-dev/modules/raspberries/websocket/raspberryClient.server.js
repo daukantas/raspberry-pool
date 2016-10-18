@@ -38,13 +38,14 @@ function emit(mac, eventName) {
     data[_key - 2] = arguments[_key];
   }
 
-  _assert(mac, _tcombForked2.default.String, 'mac');
+  _assert(mac, _tcombForked2.default.union([_tcombForked2.default.String, _tcombForked2.default.Boolean]), 'mac');
 
   _assert(eventName, _tcombForked2.default.String, 'eventName');
 
   _assert(data, _tcombForked2.default.maybe(_tcombForked2.default.list(_tcombForked2.default.Any)), 'data');
 
   logger.debug('emit', { mac, eventName, data });
+  if (!mac) return;
   if (!clients.has(mac)) {
     logger.warn('cannot send message');
     return;

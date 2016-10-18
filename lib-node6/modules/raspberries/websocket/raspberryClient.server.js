@@ -33,6 +33,7 @@ function emit(mac, eventName) {
   }
 
   logger.debug('emit', { mac, eventName, data });
+  if (!mac) return;
   if (!clients.has(mac)) {
     logger.warn('cannot send message');
     return;
