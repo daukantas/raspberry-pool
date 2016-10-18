@@ -46,20 +46,18 @@ function broadcastAction(raspberry, action) {
 }
 
 function onConnection(socket, app) {
-  clientsCount += 1;
-  logger.info('connected', { clientsCount });
-
   const user = app.websocket.users.get(socket.client.id);
 
   if (!user) return;
 
+  clientsCount += 1;
+  logger.info('connected', { clientsCount });
   raspberriesManager.raspberriesClientsConnected(user.id, user.emailDomains);
 
   socket.on('disconnect', () => {
-    if (--clientsCount === 0) {
-      raspberriesManager.raspberriesClientsDisonnected(user.id, user.emailDomains);
-    }
+    clientsCount -= 1;
     logger.info('disconnected', { clientsCount });
+    raspberriesManager.raspberriesClientsDisonnected(user.id, user.emailDomains);
   });
 
   (0, _alpWebsocket.subscribe)(socket, 'raspberries', () => {

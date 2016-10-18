@@ -230,6 +230,7 @@ function raspberriesClientsDisonnected(userId, userEmailDomains) {
   if (!userIds.size && !emailDomains.size && intervalUpdateData) {
     logger.info('stop interval');
     clearInterval(intervalUpdateData);
+    intervalUpdateData = undefined;
   }
 }
 
