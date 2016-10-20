@@ -1,3 +1,8 @@
+### v5.0.0
+
+- [`8e23e1e`](https://github.com/christophehurpeau/raspberry-pool/commit/8e23e1e89244a93a141574d68a3086de8454ef2c) fix: install view hostname (Christophe Hurpeau)
+- [`886a549`](https://github.com/christophehurpeau/raspberry-pool/commit/886a54991c42e573d0f497f234298c69f2f15685) fix: socket client count (Christophe Hurpeau)
+
 ### v5.0.0-beta.3
 
 - [`e870714`](https://github.com/christophehurpeau/raspberry-pool/commit/e8707145b206ec36b37fb1a46f5a5e366b79a37a) update readme and remove index.js (Christophe Hurpeau)
