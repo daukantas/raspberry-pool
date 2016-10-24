@@ -33,7 +33,7 @@ function InstallView(
               <div>Or install node and the client manually:</div>
               <pre>
                 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -{'\n'}
-                sudo apt-get install -y nodejs scrot{'\n'}
+                sudo apt-get install -y nodejs scrot git{'\n'}
                 sudo npm install -g raspberry-client{'\n'}
                 sudo rpi-cli install --userId={user ? `'${user.id}'` : <Link to="login">Please login !</Link>} --host={`'${hostname}'`} --port={websocketPort}
               </pre>
