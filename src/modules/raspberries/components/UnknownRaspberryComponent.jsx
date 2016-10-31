@@ -8,7 +8,7 @@ export default class UnknownRaspberryComponent extends PureComponent {
     raspberry: PropTypes.object.isRequired,
     offlineRaspberries: PropTypes.array.isRequired,
     registerUnknown: PropTypes.func.isRequired,
-    sendAction: PropTypes.func.isRequired,
+    // sendAction: PropTypes.func.isRequired,
   };
 
   state = {};

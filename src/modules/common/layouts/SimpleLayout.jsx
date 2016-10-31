@@ -16,8 +16,8 @@ type PropsType = {
   title: ?string,
   description: ?string,
   body: string,
-  // preBody: ReactElement,
-  // postBody: ReactElement,
+  preBody: ?any, // ReactElement,
+  postBody: ?any, // ReactElement,
 };
 
 export default ({ title = '', description = '', body, preBody, postBody }: PropsType) => (

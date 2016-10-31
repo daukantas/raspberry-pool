@@ -1,6 +1,5 @@
 import { PropTypes } from 'react';
 import Link from 'react-alp-link';
-import T from 'react-alp-translate';
 import HeaderUser from '../HeaderUserComponent';
 
 HeaderComponent.contextTypes = {

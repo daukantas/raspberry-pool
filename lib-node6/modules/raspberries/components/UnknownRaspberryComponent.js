@@ -198,7 +198,6 @@ exports.default = UnknownRaspberryComponent;
 UnknownRaspberryComponent.propTypes = {
   raspberry: _react.PropTypes.object.isRequired,
   offlineRaspberries: _react.PropTypes.array.isRequired,
-  registerUnknown: _react.PropTypes.func.isRequired,
-  sendAction: _react.PropTypes.func.isRequired
+  registerUnknown: _react.PropTypes.func.isRequired
 };
 //# sourceMappingURL=UnknownRaspberryComponent.js.map

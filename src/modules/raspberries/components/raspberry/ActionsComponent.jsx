@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { PureComponent, PropTypes } from 'react';
 import actions from '../../raspberryActions';
 import Spinner from '../../../common/components/SpinnerComponent';
@@ -34,7 +35,9 @@ export default class ActionsComponent extends PureComponent {
           <li
             key={action.value}
             onClick={() => {
-              const raspberries = action.raspberries.filter(raspberry => !action.isInProgress(raspberry));
+              const raspberries = action.raspberries.filter(raspberry => (
+                !action.isInProgress(raspberry)
+              ));
               if (raspberries.length) {
                 return sendAction(raspberries, action.value);
               }
@@ -43,7 +46,8 @@ export default class ActionsComponent extends PureComponent {
             {action.name}
             <Spinner
               active={!!raspberries.filter(raspberry => (
-                raspberry.actions && raspberry.actions[action.value] === 'sending' || action.isInProgress(raspberry)
+                (raspberry.actions && raspberry.actions[action.value] === 'sending')
+                 || action.isInProgress(raspberry)
               )).length}
             />
           </li>

@@ -28,7 +28,7 @@ function InstallView(
               <pre>
                 {`curl ${hostname}/install-scripts/install-raspberry.sh | `}
                 USER_ID={user ? `'${user.id}'` : <Link to="login">Please login !</Link>}
-                {` sh`}
+                {' sh'}
               </pre>
 
               <div>Or install node and the client manually:</div>

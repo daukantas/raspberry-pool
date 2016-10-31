@@ -74,7 +74,7 @@ function InstallView(_ref, _ref2) {
                 { to: 'login' },
                 'Please login !'
               ),
-              ` sh`
+              ' sh'
             ),
             _react2.default.createElement(
               'div',
