@@ -37,7 +37,7 @@ if [ ! -f config.sh ]; then
   wget $URL"config.sh"
 fi
 
-if [ "USER_ID" != "" ]; then
+if [ "$USER_ID" != "" ]; then
   echo "\nUSER_ID=$USER_ID" >> ./config.sh
 fi
 

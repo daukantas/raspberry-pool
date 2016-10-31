@@ -8,9 +8,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Simple = require('../common/layouts/Simple');
+var _SimpleLayout = require('../common/layouts/SimpleLayout');
 
-var _Simple2 = _interopRequireDefault(_Simple);
+var _SimpleLayout2 = _interopRequireDefault(_SimpleLayout);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -57,7 +57,7 @@ class NoConfigView extends _react.Component {
   }
 }
 exports.default = NoConfigView;
-NoConfigView.Layout = _Simple2.default;
+NoConfigView.Layout = _SimpleLayout2.default;
 NoConfigView.propTypes = {
   url: _react.PropTypes.string.isRequired,
   ip: _react.PropTypes.string.isRequired

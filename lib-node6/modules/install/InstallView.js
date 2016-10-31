@@ -67,13 +67,14 @@ function InstallView(_ref, _ref2) {
             _react2.default.createElement(
               'pre',
               null,
+              `curl ${ hostname }/install-scripts/install-raspberry.sh | `,
               'USER_ID=',
               user ? `'${ user.id }'` : _react2.default.createElement(
                 _reactAlpLink2.default,
                 { to: 'login' },
                 'Please login !'
               ),
-              ` curl ${ hostname }/install-scripts/install-raspberry.sh | sh`
+              ` sh`
             ),
             _react2.default.createElement(
               'div',
@@ -85,7 +86,7 @@ function InstallView(_ref, _ref2) {
               null,
               'curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -',
               '\n',
-              'sudo apt-get install -y nodejs scrot',
+              'sudo apt-get install -y nodejs scrot git',
               '\n',
               'sudo npm install -g raspberry-client',
               '\n',

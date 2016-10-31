@@ -3,7 +3,7 @@
 sh boot.sh disable
 
 sudo apt-get update
-sudo apt-get upgrade -y
+APT_LISTCHANGES_FRONTEND=none sudo apt-get upgrade -y
 
 sudo apt-get install -y tmux
 

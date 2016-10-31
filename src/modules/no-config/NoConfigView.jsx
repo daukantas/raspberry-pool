@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import SimpleLayout from '../common/layouts/Simple';
+import SimpleLayout from '../common/layouts/SimpleLayout';
 
 export default class NoConfigView extends Component {
   static Layout = SimpleLayout;
