@@ -1,3 +1,9 @@
+### v5.0.1
+
+- [`3a33246`](https://github.com/christophehurpeau/raspberry-pool/commit/3a3324696d4884addf49bda3d872d472fa7c3bfe) install missing dependency git (Christophe Hurpeau)
+- [`bcd3ee0`](https://github.com/christophehurpeau/raspberry-pool/commit/bcd3ee0edd91ca84ff4c07a03eeb74118440c1a6) fix USER_ID position in install page, fix missing $ in install script (Christophe Hurpeau)
+- [`6b06bda`](https://github.com/christophehurpeau/raspberry-pool/commit/6b06bda51a2f374f528cbf93d76b95768e85f478) lint (Christophe Hurpeau)
+
 ### v5.0.0
 
 - [`8e23e1e`](https://github.com/christophehurpeau/raspberry-pool/commit/8e23e1e89244a93a141574d68a3086de8454ef2c) fix: install view hostname (Christophe Hurpeau)
