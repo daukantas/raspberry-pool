@@ -161,7 +161,7 @@ cd $HOME
 mkdir $HOME/logs
 
 sudo npm install -g raspberry-client
-sudo rpi-cli install --host='$SERVER_HOSTNAME' --port='$SERVER_PORT' --userId='$USER_ID'
+sudo rpi-cli install --host="${SERVER_HOSTNAME}" --port="${SERVER_PORT}" --userId="${USER_ID}"
 
 # openbox started event
 echo 'NODE_ENV="production" rpi-cli display openbox-started' | sudo tee /etc/xdg/openbox/autostart
