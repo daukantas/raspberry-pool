@@ -27,8 +27,8 @@ var _HeaderUserComponent2 = _interopRequireDefault(_HeaderUserComponent);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const HeaderComponent = (_ref) => {
-  let raspberries = _ref.raspberries;
-  let sendAction = _ref.sendAction;
+  let raspberries = _ref.raspberries,
+      sendAction = _ref.sendAction;
   return _react2.default.createElement(
     'header',
     { className: 'header row space-between' },

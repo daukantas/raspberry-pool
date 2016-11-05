@@ -1,17 +1,12 @@
-import React, { PropTypes } from 'react';
+import { Helmet } from 'alp-react-redux/src';
+import type { ReactNodeType } from 'alp-react-redux/src/types';
 import { LoginButtons } from 'react-alp-login/src';
 import Header from '../common/components/install/HeaderComponent';
 
-LoginView.contextTypes = {
-  setTitle: PropTypes.func.isRequired,
-  context: PropTypes.object.isRequired,
-};
-
-export default function LoginView(props, { setTitle, context }) {
-  const title = context.t('title');
-  setTitle(`${title} - Login`);
+export default function LoginView(): ReactNodeType {
   return (
     <div className="login-view">
+      <Helmet title="Login" />
       <Header />
       <LoginButtons />
     </div>

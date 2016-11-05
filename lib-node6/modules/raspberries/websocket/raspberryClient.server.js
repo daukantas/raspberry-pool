@@ -22,7 +22,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const logger = new _nightingale2.default('app.websocket.raspberryClient');
+const logger = new _nightingale2.default('app:websocket:raspberryClient');
 const MIN_SUPPORTED_VERSION = '4.1.0';
 const clients = new Map();
 let ns;
@@ -85,13 +85,13 @@ function onConnection(socket) {
   });
 
   socket.on('hello', (_ref) => {
-    let mac = _ref.mac;
-    let userId = _ref.userId;
-    let version = _ref.version;
-    let configTime = _ref.configTime;
-    let ip = _ref.ip;
-    let screenState = _ref.screenState;
-    let hostname = _ref.hostname;
+    let mac = _ref.mac,
+        userId = _ref.userId,
+        version = _ref.version,
+        configTime = _ref.configTime,
+        ip = _ref.ip,
+        screenState = _ref.screenState,
+        hostname = _ref.hostname;
 
     logger.info('received hello', { mac, userId, version, configTime, ip, screenState, hostname });
 

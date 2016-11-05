@@ -63,9 +63,9 @@ function sendAction(raspberries, action) {
 }
 
 function registerUnknown(raspberry, _ref5) {
-  let name = _ref5.name;
-  let addOrReplace = _ref5.addOrReplace;
-  let id = _ref5.id;
+  let name = _ref5.name,
+      addOrReplace = _ref5.addOrReplace,
+      id = _ref5.id;
 
   return (() => {
     var _ref6 = _asyncToGenerator(function* (dispatch, _ref7) {

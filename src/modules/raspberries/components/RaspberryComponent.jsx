@@ -74,7 +74,7 @@ export default class RaspberryComponent extends Component {
       <fieldset>
         <legend><T id="raspberry.config" /></legend>
         <div className="row row-responsive spaced">
-          <div className="col" style={{ width: '100px', 'flex-basis': '100px', 'flex-grow': 0 }}>
+          <div className="col" style={{ width: '100px', flexBasis: '100px', flexGrow: 0 }}>
             <div className="input select">
               <select
                 value={display}

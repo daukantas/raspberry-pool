@@ -27,10 +27,10 @@ class UnknownRaspberryListComponent extends _react.Component {
 
   render() {
     var _props = this.props;
-    const raspberries = _props.raspberries;
-    const offlineRaspberries = _props.offlineRaspberries;
-    const registerUnknown = _props.registerUnknown;
-    const sendAction = _props.sendAction;
+    const raspberries = _props.raspberries,
+          offlineRaspberries = _props.offlineRaspberries,
+          registerUnknown = _props.registerUnknown,
+          sendAction = _props.sendAction;
 
 
     if (!raspberries.length) {

@@ -36,9 +36,9 @@ class RaspberryComponent extends _react.Component {
 
   render() {
     var _props = this.props;
-    const raspberry = _props.raspberry;
-    const changeConfig = _props.changeConfig;
-    const sendAction = _props.sendAction;
+    const raspberry = _props.raspberry,
+          changeConfig = _props.changeConfig,
+          sendAction = _props.sendAction;
 
 
     let url;
@@ -113,7 +113,7 @@ class RaspberryComponent extends _react.Component {
           { className: 'row row-responsive spaced' },
           _react2.default.createElement(
             'div',
-            { className: 'col', style: { width: '100px', 'flex-basis': '100px', 'flex-grow': 0 } },
+            { className: 'col', style: { width: '100px', flexBasis: '100px', flexGrow: 0 } },
             _react2.default.createElement(
               'div',
               { className: 'input select' },

@@ -24,15 +24,15 @@ var _routerBuilder = require('../routerBuilder');
 
 var _routerBuilder2 = _interopRequireDefault(_routerBuilder);
 
-var _Html = require('../modules/common/layouts/Html');
+var _Layout = require('../modules/common/layouts/Layout');
 
-var _Html2 = _interopRequireDefault(_Html);
+var _Layout2 = _interopRequireDefault(_Layout);
 
 var _controllers = require('../modules/controllers');
 
 var _controllers2 = _interopRequireDefault(_controllers);
 
-var _websocket = require('../websocket');
+var _index = require('../websocket/index.server');
 
 var _usersManager = require('../models/user/usersManager');
 
@@ -54,8 +54,8 @@ app.start(_asyncToGenerator(function* () {
   // config / init
   app.proxy = true;
   app.DATA_PATH = `${ __dirname }/../../data/`;
-  (0, _alpReactRedux2.default)(_Html2.default)(app);
-  const promiseWebsocket = (0, _websocket.init)(app);
+  (0, _alpReactRedux2.default)(_Layout2.default)(app);
+  const promiseWebsocket = (0, _index.init)(app);
 
   const authMiddleware = (0, _alpAuth2.default)({
     controllers: _controllers2.default,

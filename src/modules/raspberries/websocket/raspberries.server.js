@@ -6,7 +6,7 @@ import * as raspberriesManager from '../raspberriesManager.server';
 import { updateAll, update, updateConfig } from '../actions/raspberry';
 import type { RaspberryType } from '../types';
 
-const logger = new Logger('app.websocket.raspberries');
+const logger = new Logger('app:websocket:raspberries');
 
 let clientsCount = 0;
 let clientNs;

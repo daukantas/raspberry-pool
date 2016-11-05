@@ -31,9 +31,9 @@ class UnknownRaspberryComponent extends _react.PureComponent {
 
   render() {
     var _props = this.props;
-    const raspberry = _props.raspberry;
-    const registerUnknown = _props.registerUnknown;
-    const offlineRaspberries = _props.offlineRaspberries;
+    const raspberry = _props.raspberry,
+          registerUnknown = _props.registerUnknown,
+          offlineRaspberries = _props.offlineRaspberries;
 
 
     return _react2.default.createElement(
@@ -51,7 +51,7 @@ class UnknownRaspberryComponent extends _react.PureComponent {
         _react2.default.createElement(
           'span',
           { className: 'status label' },
-          raspberry.ip
+          raspberry.externalIp
         ),
         _react2.default.createElement(
           'span',
@@ -61,7 +61,7 @@ class UnknownRaspberryComponent extends _react.PureComponent {
         _react2.default.createElement(
           'span',
           { className: 'status label' },
-          raspberry.online
+          raspberry.ip
         )
       ),
       _react2.default.createElement(

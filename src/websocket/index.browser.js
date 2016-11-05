@@ -2,7 +2,7 @@
 import websocket from 'alp-websocket';
 import Logger from 'nightingale';
 
-const logger = new Logger('app.websocket');
+const logger = new Logger('app:websocket');
 let socket;
 
 export function init(app) {

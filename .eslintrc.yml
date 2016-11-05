@@ -1,2 +1,5 @@
 ---
   extends: pob/react-flow
+
+  rules:
+    no-use-before-define: off

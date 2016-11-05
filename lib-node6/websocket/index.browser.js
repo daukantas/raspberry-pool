@@ -20,7 +20,7 @@ var _nightingale2 = _interopRequireDefault(_nightingale);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /* global document */
-const logger = new _nightingale2.default('app.websocket');
+const logger = new _nightingale2.default('app:websocket');
 let socket;
 
 function init(app) {

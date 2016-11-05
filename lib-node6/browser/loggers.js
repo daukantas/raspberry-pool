@@ -14,11 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // {
 //   processors: [errorProcessor],
 // },
-{
-  pattern: /^app/,
-  handlers: [new _nightingaleBrowserConsole2.default(_nightingale.levels.DEBUG)],
-  stop: true
-}, {
+false, {
   handlers: [new _nightingaleBrowserConsole2.default(_nightingale.levels.INFO)]
-}]);
+}].filter(Boolean));
 //# sourceMappingURL=loggers.js.map

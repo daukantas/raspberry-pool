@@ -1,24 +1,16 @@
-import React, { Component, PropTypes } from 'react';
+import type { ReactNodeType } from 'alp-react-redux/src/types';
 import SimpleLayout from '../common/layouts/SimpleLayout';
 
-export default class NoConfigView extends Component {
-  static Layout = SimpleLayout;
-  static propTypes = {
-    url: PropTypes.string.isRequired,
-    ip: PropTypes.string.isRequired,
-  };
+type PropsType = {
+  url: string,
+  ip: string,
+};
 
-  static contextTypes = {
-    setTitle: PropTypes.func.isRequired,
-    setMeta: PropTypes.func.isRequired,
-    context: PropTypes.object.isRequired,
-  };
-
-  render() {
-    this.context.setTitle('No Config');
-
-    const { url, ip } = this.props;
-    return (<div className="no-config">
+// eslint-disable-next-line no-use-before-define
+NoConfigView.Layout = SimpleLayout;
+export default function NoConfigView({ url, ip }: PropsType): ReactNodeType {
+  return (
+    <div className="no-config">
       <div className="install-picture" />
 
       <div className="container-fixed">
@@ -27,6 +19,6 @@ export default class NoConfigView extends Component {
         <p>Go to <a href={url}>{url}</a> to configure this raspberry</p>
         {!ip ? '' : <p className="ip">IP: {ip}</p>}
       </div>
-    </div>);
-  }
+    </div>
+  );
 }

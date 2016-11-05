@@ -25,9 +25,9 @@ class ActionsComponent extends _react.PureComponent {
 
   render() {
     var _props = this.props;
-    const raspberries = _props.raspberries;
-    const sendAction = _props.sendAction;
-    const flat = _props.flat;
+    const raspberries = _props.raspberries,
+          sendAction = _props.sendAction,
+          flat = _props.flat;
 
 
     if (!raspberries || !raspberries.length) {

@@ -39,7 +39,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const logger = new _nightingale2.default('app.raspberriesManager');
+const logger = new _nightingale2.default('app:raspberriesManager');
 const map = new Map();
 const mapByMac = new Map();
 
@@ -210,7 +210,7 @@ function raspberriesClientsConnected(userId, userEmailDomains) {
   logger.info('update data: start interval');
 
   const requestUpdate = () => {
-    logger.info('update data', { userIds, emailDomains });
+    logger.debug('update data', { userIds, emailDomains });
     [userIds, emailDomains].forEach(map => Array.from(map.keys()).forEach(v => (0, _raspberryClient.broadcastToRoom)(v, 'screenshot')));
     lastUpdated = now;
   };
@@ -247,9 +247,9 @@ function changeConfig(raspberry, config) {
 }
 
 function add(id, userId, _ref) {
-  let name = _ref.name;
-  let addOrReplace = _ref.addOrReplace;
-  let replaceId = _ref.id;
+  let name = _ref.name,
+      addOrReplace = _ref.addOrReplace,
+      replaceId = _ref.id;
 
   logger.log('add', { id, name, addOrReplace, replaceId });
   const raspberry = getById(id);

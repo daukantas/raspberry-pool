@@ -6,7 +6,7 @@ configure([
   {
     processors: [errorProcessor],
   },
-  {
+  !PRODUCTION && {
     pattern: /^app/,
     handlers: [new ConsoleHandler(levels.DEBUG)],
     stop: true,
@@ -14,4 +14,4 @@ configure([
   {
     handlers: [new ConsoleHandler(levels.INFO)],
   },
-]);
+].filter(Boolean));

@@ -31,8 +31,8 @@ const raspberryReducer = (0, _alpReactRedux.createReducer)({
   [_raspberry.saving]: raspberry => _extends({}, raspberry, { saving: true }),
   [_raspberry.saved]: raspberry => _extends({}, raspberry, { saving: false }),
   [_raspberry.sendingAction]: (raspberry, _ref4) => {
-    let changes = _ref4.changes;
-    let action = _ref4.action;
+    let changes = _ref4.changes,
+        action = _ref4.action;
     return _extends({}, raspberry, changes, {
       actions: _extends({}, raspberry.actions, {
         [action]: 'sending'
@@ -40,8 +40,8 @@ const raspberryReducer = (0, _alpReactRedux.createReducer)({
     });
   },
   [_raspberry.actionSent]: (raspberry, _ref5) => {
-    let changes = _ref5.changes;
-    let action = _ref5.action;
+    let changes = _ref5.changes,
+        action = _ref5.action;
     return _extends({}, raspberry, changes, {
       actions: _extends({}, raspberry.actions, {
         [action]: null

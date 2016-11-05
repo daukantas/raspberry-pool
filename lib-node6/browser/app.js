@@ -12,7 +12,7 @@ var _alpReactRedux = require('alp-react-redux');
 
 var _alpReactRedux2 = _interopRequireDefault(_alpReactRedux);
 
-var _websocket = require('../websocket');
+var _index = require('../websocket/index.browser');
 
 var _controllers = require('../modules/controllers');
 
@@ -37,9 +37,10 @@ const app = new _alp2.default();
 app.appVersion = window.VERSION;
 
 app.start(_asyncToGenerator(function* () {
+  console.log('start');
   // init
   yield app.init();
-  (0, _websocket.init)(app);
+  (0, _index.init)(app);
   (0, _alpReactRedux2.default)(document.getElementById('app'))(app);
 
   // middlewares

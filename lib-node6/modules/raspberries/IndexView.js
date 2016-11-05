@@ -44,18 +44,20 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const IndexView = (_ref, context) => {
-  let unknownRaspberries = _ref.unknownRaspberries;
-  let registeredRaspberries = _ref.registeredRaspberries;
-  let sendAction = _ref.sendAction;
-  let changeConfig = _ref.changeConfig;
-  let registerUnknown = _ref.registerUnknown;
-
-  const title = context.context.t('raspberry-pool.title');
-  context.setTitle(title);
+const IndexView = (_ref) => {
+  let unknownRaspberries = _ref.unknownRaspberries,
+      registeredRaspberries = _ref.registeredRaspberries,
+      sendAction = _ref.sendAction,
+      changeConfig = _ref.changeConfig,
+      registerUnknown = _ref.registerUnknown;
   return _react2.default.createElement(
     'div',
     null,
+    _react2.default.createElement(
+      _reactAlpTranslate2.default,
+      { id: 'raspberry-pool.title' },
+      t => _react2.default.createElement(_alpReactRedux.Helmet, { title: t })
+    ),
     _react2.default.createElement(_HeaderComponent2.default, {
       raspberries: registeredRaspberries,
       sendAction: sendAction
@@ -100,21 +102,6 @@ const IndexView = (_ref, context) => {
       )
     )
   );
-};
-
-IndexView.propTypes = {
-  registeredRaspberries: _react.PropTypes.array.isRequired,
-  unknownRaspberries: _react.PropTypes.array.isRequired,
-
-  // actions
-  sendAction: _react.PropTypes.func.isRequired,
-  changeConfig: _react.PropTypes.func.isRequired,
-  registerUnknown: _react.PropTypes.func.isRequired
-};
-
-IndexView.contextTypes = {
-  setTitle: _react.PropTypes.func.isRequired,
-  context: _react.PropTypes.object.isRequired
 };
 
 exports.default = (0, _alpReactRedux.connect)((_ref2) => {

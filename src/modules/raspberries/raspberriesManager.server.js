@@ -16,7 +16,7 @@ import {
   screenshotUpdated as screenshotUpdatedAction,
 } from './actions/raspberry';
 
-const logger = new Logger('app.raspberriesManager');
+const logger = new Logger('app:raspberriesManager');
 const map = new Map();
 const mapByMac = new Map();
 
@@ -201,7 +201,7 @@ export function raspberriesClientsConnected(userId: string, userEmailDomains: Ar
   logger.info('update data: start interval');
 
   const requestUpdate = () => {
-    logger.info('update data', { userIds, emailDomains });
+    logger.debug('update data', { userIds, emailDomains });
     [userIds, emailDomains].forEach(map => (
       Array.from(map.keys()).forEach(v => broadcastToRoomRaspberryClients(v, 'screenshot'))
     ));

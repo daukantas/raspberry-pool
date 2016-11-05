@@ -21,9 +21,9 @@ export default class UnknownRaspberryComponent extends PureComponent {
         <Spinner active={raspberry.saving} />
         <div>
           <h2 className="text-title">{raspberry.hostname || raspberry.ip}</h2>
-          <span className="status label">{raspberry.ip}</span>
+          <span className="status label">{raspberry.externalIp}</span>
           <span>&nbsp;</span>
-          <span className="status label">{raspberry.online}</span>
+          <span className="status label">{raspberry.ip}</span>
         </div>
 
         <div className="row row-responsive spaced">

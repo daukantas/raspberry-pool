@@ -24,10 +24,10 @@ exports.default = (_ref) => {
   var _ref$title = _ref.title;
   let title = _ref$title === undefined ? '' : _ref$title;
   var _ref$description = _ref.description;
-  let description = _ref$description === undefined ? '' : _ref$description;
-  let body = _ref.body;
-  let preBody = _ref.preBody;
-  let postBody = _ref.postBody;
+  let description = _ref$description === undefined ? '' : _ref$description,
+      body = _ref.body,
+      preBody = _ref.preBody,
+      postBody = _ref.postBody;
   return _react2.default.createElement(
     'html',
     { lang: 'en' },

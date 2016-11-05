@@ -8,6 +8,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _alpReactRedux = require('alp-react-redux');
+
 var _reactAlpUser = require('react-alp-user');
 
 var _reactAlpUser2 = _interopRequireDefault(_reactAlpUser);
@@ -22,21 +24,22 @@ var _HeaderComponent2 = _interopRequireDefault(_HeaderComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function InstallView(_ref, _ref2) {
-  let hostname = _ref.hostname;
-  let websocketPort = _ref.websocketPort;
-  let setTitle = _ref2.setTitle;
-  let setMeta = _ref2.setMeta;
-
-  setTitle('How to install raspberry client');
-  setMeta('description', 'Install a raspberry to make it work with raspberry-pool');
-
+exports.default = (_ref) => {
+  let hostname = _ref.hostname,
+      websocketPort = _ref.websocketPort;
   return _react2.default.createElement(
     _reactAlpUser2.default,
     null,
     user => _react2.default.createElement(
       'div',
       null,
+      _react2.default.createElement(_alpReactRedux.Helmet, {
+        title: 'How to install raspberry client',
+        meta: [{
+          name: 'description',
+          content: 'Install a raspberry to make it work with raspberry-pool'
+        }]
+      }),
       _react2.default.createElement(_HeaderComponent2.default, null),
       _react2.default.createElement('div', { className: 'install-picture' }),
       _react2.default.createElement(
@@ -106,17 +109,5 @@ function InstallView(_ref, _ref2) {
       )
     )
   );
-}
-
-InstallView.propTypes = {
-  hostname: _react.PropTypes.string.isRequired,
-  websocketPort: _react.PropTypes.number.isRequired
 };
-
-InstallView.contextTypes = {
-  setTitle: _react.PropTypes.func.isRequired,
-  setMeta: _react.PropTypes.func.isRequired
-};
-
-exports.default = InstallView;
 //# sourceMappingURL=InstallView.js.map

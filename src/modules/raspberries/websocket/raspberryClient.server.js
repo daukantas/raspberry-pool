@@ -3,7 +3,7 @@ import { lt as semverLt } from 'semver';
 import * as raspberriesManager from '../raspberriesManager.server';
 import type { RaspberryType, RaspberryDataType } from '../types';
 
-const logger = new Logger('app.websocket.raspberryClient');
+const logger = new Logger('app:websocket:raspberryClient');
 const MIN_SUPPORTED_VERSION = '4.1.0';
 const clients = new Map();
 let ns;

@@ -4,9 +4,9 @@ import googleStrategy from 'alp-auth/strategies/google';
 import reactredux from 'alp-react-redux/src';
 import router from 'alp-limosa/src';
 import routerBuilder from '../routerBuilder';
-import Html from '../modules/common/layouts/Html';
+import Html from '../modules/common/layouts/Layout';
 import controllers from '../modules/controllers';
-import { init as websocket } from '../websocket';
+import { init as websocket } from '../websocket/index.server';
 import usersManager from '../models/user/usersManager';
 import * as loginModuleDescriptor from '../modules/login/descriptor';
 

@@ -27,9 +27,9 @@ class RaspberryListComponent extends _react.Component {
 
   render() {
     var _props = this.props;
-    const raspberries = _props.raspberries;
-    const changeConfig = _props.changeConfig;
-    const sendAction = _props.sendAction;
+    const raspberries = _props.raspberries,
+          changeConfig = _props.changeConfig,
+          sendAction = _props.sendAction;
 
     return _react2.default.createElement(
       'ul',
