@@ -1,3 +1,9 @@
+### v5.1.0
+
+- [`4138ba0`](https://github.com/christophehurpeau/raspberry-pool/commit/4138ba0ff568f164cf8a29d3d658d4a00c100957) Fix variable escape (DarzuL)
+- [`7af867a`](https://github.com/christophehurpeau/raspberry-pool/commit/7af867a545e4ff8c08850a8c366a8b37edbea13f) update dependencies (Christophe Hurpeau)
+- [`79762af`](https://github.com/christophehurpeau/raspberry-pool/commit/79762af0fbeb478724f907525c06768bd413b834) add omxplayer (Christophe Hurpeau)
+
 ### v5.0.1
 
 - [`3a33246`](https://github.com/christophehurpeau/raspberry-pool/commit/3a3324696d4884addf49bda3d872d472fa7c3bfe) install missing dependency git (Christophe Hurpeau)
