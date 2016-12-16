@@ -80,10 +80,21 @@ displayTitle 'Install dependencies'
 # unclutter: hide the mouse cursor
 # xdotool: emulate keyboard key
 # supervisor: keep node client alive
-# scrot: screenshot tool
 # livestreamer: display videos from internet
 # omxplayer: display videos
-sudo apt-get install -y uget tint2 xterm unclutter xdotool supervisor xinit openbox scrot lxterminal livestreamer omxplayer
+sudo apt-get install -y uget tint2 xterm unclutter xdotool supervisor xinit openbox lxterminal livestreamer omxplayer
+
+##
+# Install raspi2png
+# Screenshot tool working with Livestreamer and Omxplayer
+##
+sudo apt-get install libpng12-dev
+git clone https://github.com/AndrewFromMelbourne/raspi2png.git
+cd raspi2png
+make
+sudo mv raspi2png /usr/local/bin/
+cd $HOME
+rm -rf raspi2png
 
 ##
 # Install kweb/Chromium
