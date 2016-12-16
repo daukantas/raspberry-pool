@@ -146,6 +146,11 @@ class RaspberryComponent extends _react.Component {
                   'option',
                   { value: 'livestreamer' },
                   'livestreamer'
+                ),
+                _react2.default.createElement(
+                  'option',
+                  { value: 'omxplayer' },
+                  'omxplayer'
                 )
               ),
               _react2.default.createElement(
@@ -163,7 +168,7 @@ class RaspberryComponent extends _react.Component {
               { className: 'input text' },
               _react2.default.createElement('input', {
                 id: `raspberry-url-${ raspberry.id }`,
-                type: 'url', required: true,
+                type: display === 'omxplayer' ? 'text' : 'url', required: true,
                 className: `has-value${ url ? '' : ' has-empty-value' }`,
                 value: url,
                 autoComplete: 'off',
@@ -174,7 +179,7 @@ class RaspberryComponent extends _react.Component {
               _react2.default.createElement(
                 'label',
                 { htmlFor: `raspberry-url-${ raspberry.id }` },
-                _react2.default.createElement(_reactAlpTranslate2.default, { id: 'raspberry.url' })
+                _react2.default.createElement(_reactAlpTranslate2.default, { id: display === 'omxplayer' ? 'raspberry.urlOrPath' : 'raspberry.url' })
               )
             )
           )

@@ -16,4 +16,5 @@ common:
   'raspberry.config': "Config"
   'raspberry.display': "Display"
   'raspberry.url': "URL"
+  'raspberry.urlOrPath': "URL / Path"
   'raspberry.save': "Save"

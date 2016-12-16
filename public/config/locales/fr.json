@@ -14,5 +14,6 @@
     "raspberry.config": "Config",
     "raspberry.display": "Affichage",
     "raspberry.url": "URL",
+    "raspberry.urlOrPath": "URL / Chemin",
     "raspberry.save": "Enregistrer"
 }

@@ -88,6 +88,7 @@ export default class RaspberryComponent extends Component {
                 <option value="kweb3">kweb3</option>
                 <option value="chromium">chromium</option>
                 <option value="livestreamer">livestreamer</option>
+                <option value="omxplayer">omxplayer</option>
               </select>
               <label htmlFor={`raspberry-select-${raspberry.id}`}><T id="raspberry.display" /></label>
             </div>
@@ -97,7 +98,7 @@ export default class RaspberryComponent extends Component {
               <div className="input text">
                 <input
                   id={`raspberry-url-${raspberry.id}`}
-                  type="url" required
+                  type={display === 'omxplayer' ? 'text' : 'url'} required
                   className={`has-value${url ? '' : ' has-empty-value'}`}
                   value={url}
                   autoComplete="off"
@@ -105,7 +106,9 @@ export default class RaspberryComponent extends Component {
                     url: raspberry.data.config.url === e.target.value ? null : e.target.value,
                   })}
                 />
-                <label htmlFor={`raspberry-url-${raspberry.id}`}><T id="raspberry.url" /></label>
+                <label htmlFor={`raspberry-url-${raspberry.id}`}>
+                  <T id={display === 'omxplayer' ? 'raspberry.urlOrPath' : 'raspberry.url'} />
+                </label>
               </div>
             </div>
           )}

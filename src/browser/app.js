@@ -9,10 +9,8 @@ import routerBuilder from '../routerBuilder';
 import * as moduleDescriptors from '../modules';
 
 const app = new Alp();
-app.appVersion = window.VERSION;
 
 app.start(async () => {
-  console.log('start');
   // init
   await app.init();
   websocket(app);

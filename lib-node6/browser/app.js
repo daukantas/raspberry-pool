@@ -34,10 +34,8 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 
 const app = new _alp2.default();
-app.appVersion = window.VERSION;
 
 app.start(_asyncToGenerator(function* () {
-  console.log('start');
   // init
   yield app.init();
   (0, _index.init)(app);
