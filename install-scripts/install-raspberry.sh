@@ -67,6 +67,10 @@ UsePAM no
   sudo /etc/init.d/ssh reload
 fi
 
+# With Raspbian 2016-11 ssh isn't enabled by default
+sudo update-rc.d ssh defaults
+sudo update-rc.d ssh enable
+
 
 ##
 # Setup wifi
