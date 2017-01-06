@@ -92,7 +92,7 @@ sudo apt-get install libpng12-dev
 git clone https://github.com/AndrewFromMelbourne/raspi2png.git
 cd raspi2png
 make
-sudo mv raspi2png /usr/local/bin/
+sudo mv raspi2png /usr/bin/
 cd $HOME
 rm -rf raspi2png
 
