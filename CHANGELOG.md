@@ -1,3 +1,10 @@
+### v5.1.1
+
+- [`7e75463`](https://github.com/christophehurpeau/raspberry-pool/commit/7e75463318bc7cf75aeca6223874228c2f69a467) Use raspi2png instead of scrot (DarzuL)
+- [`79268a0`](https://github.com/christophehurpeau/raspberry-pool/commit/79268a0e5d51d5ab6a87387ddbeba965d2294e82) Fix blocked installèclient because of youtube-dl asking for install confirmation (DarzuL)
+- [`354929b`](https://github.com/christophehurpeau/raspberry-pool/commit/354929b331e2c1e8ca45e5c28f9c6a644b162ceb) Fix blocked apt.sh because of apt-get update command asking for permission (DarzuL)
+- [`ab95a7d`](https://github.com/christophehurpeau/raspberry-pool/commit/ab95a7d507a7ef93875eef31c998d3fa5235bd2e) Enable ssh service (DarzuL)
+
 ### v5.1.0
 
 - [`4138ba0`](https://github.com/christophehurpeau/raspberry-pool/commit/4138ba0ff568f164cf8a29d3d658d4a00c100957) Fix variable escape (DarzuL)
