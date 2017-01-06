@@ -103,7 +103,7 @@ if [ "$armVersion" = "v7l" ]; then
     displayTitle 'Install kweb / Chromium'
 
     # youtube-dl for video support
-    ginstall-ytdl
+    echo y | ginstall-ytdl
 
     # https://www.raspberrypi.org/forums/viewtopic.php?t=121195
     wget -qO - http://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
@@ -119,7 +119,7 @@ else
     displayTitle 'Install kweb'
 
     # youtube-dl for video support
-    ginstall-ytdl
+    echo y | ginstall-ytdl
 
     kwebVersion='1.6.8'
     wget "http://steinerdatenbank.de/software/kweb-$kwebVersion.tar.gz"
