@@ -73,16 +73,12 @@ sudo /etc/init.d/kbd restart
 ##
 displayTitle 'Install dependencies'
 
-# uget: kweb - download manager
-# tint2: kweb - task bar
-# xterm: kweb - full screen video without GUI
-# lxterminal: kweb
 # unclutter: hide the mouse cursor
 # xdotool: emulate keyboard key
 # supervisor: keep node client alive
 # livestreamer: display videos from internet
 # omxplayer: display videos
-sudo apt-get install -y uget tint2 xterm unclutter xdotool supervisor xinit openbox lxterminal livestreamer omxplayer
+sudo apt-get install -y unclutter xdotool supervisor xinit openbox livestreamer omxplayer
 
 ##
 # Install raspi2png
@@ -97,39 +93,13 @@ cd $HOME
 rm -rf raspi2png
 
 ##
-# Install kweb/Chromium
+# Install Chromium
 ##
-if [ "$armVersion" = "v7l" ]; then
-    displayTitle 'Install kweb / Chromium'
+displayTitle 'Install Chromium'
 
-    # youtube-dl for video support
-    echo y | ginstall-ytdl
-
-    # https://www.raspberrypi.org/forums/viewtopic.php?t=121195
-    wget -qO - http://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo apt-key add -
-    echo "deb http://dl.bintray.com/kusti8/chromium-rpi jessie main" | sudo tee -a /etc/apt/sources.list
-    sudo apt-get update
-    sudo apt-get install -y chromium-browser kweb
-else
-    # raspberry 1
-
-    ##
-    # Install kweb
-    ##
-    displayTitle 'Install kweb'
-
-    # youtube-dl for video support
-    echo y | ginstall-ytdl
-
-    kwebVersion='1.6.8'
-    wget "http://steinerdatenbank.de/software/kweb-$kwebVersion.tar.gz"
-    tar xzvf "kweb-$kwebVersion.tar.gz"
-    cd "kweb-$kwebVersion"
-    ./debinstall
-    cd $HOME
-    rm -rf "kweb-$kwebVersion" "kweb-$kwebVersion.tar.gz"
-
-fi;
+# youtube-dl for video support
+echo y | ginstall-ytdl
+sudo apt-get install -y chromium-browser
 
 
 ##
