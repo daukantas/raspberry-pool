@@ -1,3 +1,10 @@
+### v5.2.0
+
+- [`4d616af`](https://github.com/christophehurpeau/raspberry-pool/commit/4d616af38c8c43e1e3692f27b21d57051ae972b2) Fix path to install raspi2png because the last Raspian version doesn't have /usr/local dir (DarzuL)
+- [`aedc919`](https://github.com/christophehurpeau/raspberry-pool/commit/aedc919e8d8afc8528d724cfbc39f28a88aa4ec1) fix: install openbox needs root now (Christophe Hurpeau)
+- [`e2dec0c`](https://github.com/christophehurpeau/raspberry-pool/commit/e2dec0cbc2cdb39b027e5e44736fdb2ef2ab8f18) Remove kweb install (DarzuL)
+- [`237b4b4`](https://github.com/christophehurpeau/raspberry-pool/commit/237b4b46bafe0c1dd54d73d6105d7d458354b2d7) refactor: remove kweb (Christophe Hurpeau)
+
 ### v5.1.1
 
 - [`7e75463`](https://github.com/christophehurpeau/raspberry-pool/commit/7e75463318bc7cf75aeca6223874228c2f69a467) Use raspi2png instead of scrot (DarzuL)
