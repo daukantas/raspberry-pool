@@ -60,7 +60,7 @@ class RaspberryComponent extends _react.Component {
     }
 
     if (!display) {
-      display = url ? 'kweb3' : 'none';
+      display = url ? 'chromium' : 'none';
     }
 
     return _react2.default.createElement(
@@ -131,11 +131,6 @@ class RaspberryComponent extends _react.Component {
                   'option',
                   { value: 'none' },
                   'Empty'
-                ),
-                _react2.default.createElement(
-                  'option',
-                  { value: 'kweb3' },
-                  'kweb3'
                 ),
                 _react2.default.createElement(
                   'option',

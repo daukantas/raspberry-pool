@@ -46,7 +46,7 @@ function changeConfig(id, config) {
   // TODO configManager
   config = Object.assign({}, {
     time: Date.now(),
-    display: config.display || 'kweb3',
+    display: config.display || 'chromium',
     url: config.url.trim()
   });
   map.get(id).config = config;

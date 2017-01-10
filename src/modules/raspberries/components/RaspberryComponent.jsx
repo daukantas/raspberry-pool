@@ -40,7 +40,7 @@ export default class RaspberryComponent extends Component {
     }
 
     if (!display) {
-      display = url ? 'kweb3' : 'none';
+      display = url ? 'chromium' : 'none';
     }
 
     return (<div className="raspberry">
@@ -85,7 +85,6 @@ export default class RaspberryComponent extends Component {
                 })}
               >
                 <option value="none">Empty</option>
-                <option value="kweb3">kweb3</option>
                 <option value="chromium">chromium</option>
                 <option value="livestreamer">livestreamer</option>
                 <option value="omxplayer">omxplayer</option>
