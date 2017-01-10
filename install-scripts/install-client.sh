@@ -143,7 +143,7 @@ command=xinit /usr/bin/openbox-session
 autorestart=true
 redirect_stderr=true
 stdout_logfile='$HOME'/logs/openbox.log
-user=pi
+user=root
 ' | sudo tee /etc/supervisor/conf.d/openbox.conf
 ​
 
