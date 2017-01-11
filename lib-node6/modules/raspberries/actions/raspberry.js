@@ -26,9 +26,7 @@ const sendingAction = exports.sendingAction = (0, _alpReactRedux.createAction)('
 const actionSent = exports.actionSent = (0, _alpReactRedux.createAction)('ACTION_SENT_RASPBERRY', (raspberry, action, result) => ({ id: raspberry.id, action, result }));
 
 const changeConfig = exports.changeConfig = (raspberry, newConfig) => (() => {
-  var _ref = _asyncToGenerator(function* (dispatch, _ref2) {
-    let websocket = _ref2.websocket;
-
+  var _ref = _asyncToGenerator(function* (dispatch, { websocket }) {
     dispatch(saving(raspberry));
     const configSaved = yield websocket.emit('raspberry:changeConfig', raspberry.id, newConfig);
     dispatch(updateConfig(raspberry, configSaved));
@@ -42,9 +40,7 @@ const changeConfig = exports.changeConfig = (raspberry, newConfig) => (() => {
 
 function sendAction(raspberries, action) {
   return (() => {
-    var _ref3 = _asyncToGenerator(function* (dispatch, _ref4) {
-      let websocket = _ref4.websocket;
-
+    var _ref2 = _asyncToGenerator(function* (dispatch, { websocket }) {
       raspberries.forEach(function (raspberry) {
         return dispatch(sendingAction(raspberry, action));
       });
@@ -57,20 +53,14 @@ function sendAction(raspberries, action) {
     });
 
     return function (_x3, _x4) {
-      return _ref3.apply(this, arguments);
+      return _ref2.apply(this, arguments);
     };
   })();
 }
 
-function registerUnknown(raspberry, _ref5) {
-  let name = _ref5.name,
-      addOrReplace = _ref5.addOrReplace,
-      id = _ref5.id;
-
+function registerUnknown(raspberry, { name, addOrReplace, id }) {
   return (() => {
-    var _ref6 = _asyncToGenerator(function* (dispatch, _ref7) {
-      let websocket = _ref7.websocket;
-
+    var _ref3 = _asyncToGenerator(function* (dispatch, { websocket }) {
       dispatch(saving(raspberry));
       const newRaspberry = yield websocket.emit('raspberry:registerUnknown', raspberry.id, { name, addOrReplace, id });
       if (newRaspberry) {
@@ -84,7 +74,7 @@ function registerUnknown(raspberry, _ref5) {
     });
 
     return function (_x5, _x6) {
-      return _ref6.apply(this, arguments);
+      return _ref3.apply(this, arguments);
     };
   })();
 }

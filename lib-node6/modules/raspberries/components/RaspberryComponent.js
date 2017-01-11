@@ -35,11 +35,7 @@ class RaspberryComponent extends _react.Component {
   }
 
   render() {
-    var _props = this.props;
-    const raspberry = _props.raspberry,
-          changeConfig = _props.changeConfig,
-          sendAction = _props.sendAction;
-
+    const { raspberry, changeConfig, sendAction } = this.props;
 
     let url;
     let display;

@@ -19,19 +19,14 @@ var _UnknownRaspberryComponent2 = _interopRequireDefault(_UnknownRaspberryCompon
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class UnknownRaspberryListComponent extends _react.Component {
-  constructor() {
+  constructor(...args) {
     var _temp;
 
-    return _temp = super(...arguments), this.shouldComponentUpdate = _function2.default, _temp;
+    return _temp = super(...args), this.shouldComponentUpdate = _function2.default, _temp;
   }
 
   render() {
-    var _props = this.props;
-    const raspberries = _props.raspberries,
-          offlineRaspberries = _props.offlineRaspberries,
-          registerUnknown = _props.registerUnknown,
-          sendAction = _props.sendAction;
-
+    const { raspberries, offlineRaspberries, registerUnknown, sendAction } = this.props;
 
     if (!raspberries.length) {
       return null;

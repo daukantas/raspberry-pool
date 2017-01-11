@@ -26,34 +26,30 @@ var _HeaderUserComponent2 = _interopRequireDefault(_HeaderUserComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const HeaderComponent = (_ref) => {
-  let raspberries = _ref.raspberries,
-      sendAction = _ref.sendAction;
-  return _react2.default.createElement(
-    'header',
-    { className: 'header row space-between' },
+const HeaderComponent = ({ raspberries, sendAction }) => _react2.default.createElement(
+  'header',
+  { className: 'header row space-between' },
+  _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement('div', { className: 'logo' })
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'end' },
     _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement('div', { className: 'logo' })
+      _reactAlpLink2.default,
+      { to: 'default', params: { controller: 'install' }, className: 'button flat' },
+      _react2.default.createElement(_reactAlpTranslate2.default, { id: 'header.installClientLink' })
     ),
-    _react2.default.createElement(
-      'div',
-      { className: 'end' },
-      _react2.default.createElement(
-        _reactAlpLink2.default,
-        { to: 'default', params: { controller: 'install' }, className: 'button flat' },
-        _react2.default.createElement(_reactAlpTranslate2.default, { id: 'header.installClientLink' })
-      ),
-      _react2.default.createElement(_ActionsComponent2.default, { flat: true, raspberries: raspberries, sendAction: sendAction })
-    ),
-    _react2.default.createElement(
-      'div',
-      { className: 'end' },
-      _react2.default.createElement(_HeaderUserComponent2.default, null)
-    )
-  );
-};
+    _react2.default.createElement(_ActionsComponent2.default, { flat: true, raspberries: raspberries, sendAction: sendAction })
+  ),
+  _react2.default.createElement(
+    'div',
+    { className: 'end' },
+    _react2.default.createElement(_HeaderUserComponent2.default, null)
+  )
+);
 
 HeaderComponent.propTypes = {
   raspberries: _react.PropTypes.array,

@@ -23,18 +23,14 @@ var _SpinnerComponent2 = _interopRequireDefault(_SpinnerComponent);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class UnknownRaspberryComponent extends _react.PureComponent {
-  constructor() {
+  constructor(...args) {
     var _temp;
 
-    return _temp = super(...arguments), this.state = {}, _temp;
+    return _temp = super(...args), this.state = {}, _temp;
   }
 
   render() {
-    var _props = this.props;
-    const raspberry = _props.raspberry,
-          registerUnknown = _props.registerUnknown,
-          offlineRaspberries = _props.offlineRaspberries;
-
+    const { raspberry, registerUnknown, offlineRaspberries } = this.props;
 
     return _react2.default.createElement(
       'div',

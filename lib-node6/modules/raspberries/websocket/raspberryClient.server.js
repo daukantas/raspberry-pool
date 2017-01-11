@@ -27,11 +27,7 @@ const MIN_SUPPORTED_VERSION = '4.1.0';
 const clients = new Map();
 let ns;
 
-function emit(mac, eventName) {
-  for (var _len = arguments.length, data = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-    data[_key - 2] = arguments[_key];
-  }
-
+function emit(mac, eventName, ...data) {
   logger.debug('emit', { mac, eventName, data });
   if (!mac) return;
   if (!clients.has(mac)) {
@@ -41,11 +37,7 @@ function emit(mac, eventName) {
   clients.get(mac).emit(eventName, ...data);
 }
 
-function broadcastToRoom(room, eventName) {
-  for (var _len2 = arguments.length, data = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-    data[_key2 - 2] = arguments[_key2];
-  }
-
+function broadcastToRoom(room, eventName, ...data) {
   logger.debug('broadcast room', { room, eventName, data });
   ns.to(room).emit(eventName, ...data);
 }
@@ -84,15 +76,7 @@ function onConnection(socket) {
     clientMac = null;
   });
 
-  socket.on('hello', (_ref) => {
-    let mac = _ref.mac,
-        userId = _ref.userId,
-        version = _ref.version,
-        configTime = _ref.configTime,
-        ip = _ref.ip,
-        screenState = _ref.screenState,
-        hostname = _ref.hostname;
-
+  socket.on('hello', ({ mac, userId, version, configTime, ip, screenState, hostname }) => {
     logger.info('received hello', { mac, userId, version, configTime, ip, screenState, hostname });
 
     if (clientMac) {
@@ -113,9 +97,7 @@ function onConnection(socket) {
     raspberriesManager.setOnline(mac, userId, configTime, { hostname, externalIp, ip, screenState }, raspberryData => joinRooms(socket, raspberryData));
   });
 
-  socket.on('screenshot', (_ref2, callback) => {
-    let buffer = _ref2.buffer;
-
+  socket.on('screenshot', ({ buffer }, callback) => {
     logger.info('got screenshot', { hasBuffer: !!buffer });
     if (buffer) {
       // non async method

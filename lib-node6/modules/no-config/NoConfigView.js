@@ -17,10 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 // eslint-disable-next-line no-use-before-define
 NoConfigView.Layout = _SimpleLayout2.default;
-function NoConfigView(_ref) {
-  let url = _ref.url,
-      ip = _ref.ip;
-
+function NoConfigView({ url, ip }) {
   return _react2.default.createElement(
     'div',
     { className: 'no-config' },

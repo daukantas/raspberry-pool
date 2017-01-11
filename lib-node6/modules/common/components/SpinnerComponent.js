@@ -15,9 +15,7 @@ SpinnerComponent.propTypes = {
   active: _react.PropTypes.bool
 };
 
-function SpinnerComponent(_ref) {
-  let active = _ref.active;
-
+function SpinnerComponent({ active }) {
   return _react2.default.createElement(
     'div',
     { className: `spinner${ active ? ' active' : '' }` },

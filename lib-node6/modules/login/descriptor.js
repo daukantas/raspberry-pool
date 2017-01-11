@@ -8,7 +8,7 @@ var _LoginView = require('./LoginView');
 
 Object.defineProperty(exports, 'View', {
   enumerable: true,
-  get: function get() {
+  get: function () {
     return _interopRequireDefault(_LoginView).default;
   }
 });

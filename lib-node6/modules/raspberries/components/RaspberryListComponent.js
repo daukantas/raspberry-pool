@@ -19,18 +19,14 @@ var _RaspberryComponent2 = _interopRequireDefault(_RaspberryComponent);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 class RaspberryListComponent extends _react.Component {
-  constructor() {
+  constructor(...args) {
     var _temp;
 
-    return _temp = super(...arguments), this.shouldComponentUpdate = _function2.default, _temp;
+    return _temp = super(...args), this.shouldComponentUpdate = _function2.default, _temp;
   }
 
   render() {
-    var _props = this.props;
-    const raspberries = _props.raspberries,
-          changeConfig = _props.changeConfig,
-          sendAction = _props.sendAction;
-
+    const { raspberries, changeConfig, sendAction } = this.props;
     return _react2.default.createElement(
       'ul',
       { className: 'raspberry-list' },

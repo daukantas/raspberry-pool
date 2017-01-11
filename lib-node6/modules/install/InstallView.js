@@ -24,9 +24,7 @@ var _HeaderComponent2 = _interopRequireDefault(_HeaderComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = (_ref) => {
-  let hostname = _ref.hostname,
-      websocketPort = _ref.websocketPort;
+exports.default = function installView({ hostname, websocketPort }) {
   return _react2.default.createElement(
     _reactAlpUser2.default,
     null,

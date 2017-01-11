@@ -9,7 +9,7 @@ exports.default = [
   name: 'Refresh',
   value: 'refresh',
   isVisible: r => r.screenState === 'on',
-  isInProgress: r => false
+  isInProgress: () => false
 }, {
   name: 'Screen on',
   value: 'screen-on',
@@ -23,7 +23,7 @@ exports.default = [
 }, {
   name: 'Update client',
   value: 'self-update',
-  isVisible: r => true,
+  isVisible: () => true,
   isInProgress: r => !!r.updating
 }];
 //# sourceMappingURL=raspberryActions.js.map

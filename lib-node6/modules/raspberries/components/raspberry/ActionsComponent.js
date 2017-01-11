@@ -24,11 +24,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 class ActionsComponent extends _react.PureComponent {
 
   render() {
-    var _props = this.props;
-    const raspberries = _props.raspberries,
-          sendAction = _props.sendAction,
-          flat = _props.flat;
-
+    const { raspberries, sendAction, flat } = this.props;
 
     if (!raspberries || !raspberries.length) {
       return _react2.default.createElement('div', { className: 'actions' });

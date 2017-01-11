@@ -23,9 +23,7 @@ HeaderComponent.contextTypes = {
   context: _react.PropTypes.object.isRequired
 };
 
-function HeaderComponent(props, _ref) {
-  let context = _ref.context;
-
+function HeaderComponent(props, { context }) {
   return _react2.default.createElement(
     'header',
     { className: 'header row space-between' },

@@ -44,71 +44,67 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const IndexView = (_ref) => {
-  let unknownRaspberries = _ref.unknownRaspberries,
-      registeredRaspberries = _ref.registeredRaspberries,
-      sendAction = _ref.sendAction,
-      changeConfig = _ref.changeConfig,
-      registerUnknown = _ref.registerUnknown;
-  return _react2.default.createElement(
-    'div',
+const IndexView = ({
+  unknownRaspberries,
+  registeredRaspberries,
+  sendAction,
+  changeConfig,
+  registerUnknown
+}) => _react2.default.createElement(
+  'div',
+  null,
+  _react2.default.createElement(
+    _reactAlpTranslate2.default,
+    { id: 'raspberry-pool.title' },
+    t => _react2.default.createElement(_alpReactRedux.Helmet, { title: t })
+  ),
+  _react2.default.createElement(_HeaderComponent2.default, {
+    raspberries: registeredRaspberries,
+    sendAction: sendAction
+  }),
+  _react2.default.createElement(
+    _reactAlpUser2.default,
     null,
-    _react2.default.createElement(
-      _reactAlpTranslate2.default,
-      { id: 'raspberry-pool.title' },
-      t => _react2.default.createElement(_alpReactRedux.Helmet, { title: t })
-    ),
-    _react2.default.createElement(_HeaderComponent2.default, {
-      raspberries: registeredRaspberries,
-      sendAction: sendAction
-    }),
-    _react2.default.createElement(
-      _reactAlpUser2.default,
-      null,
-      user => !user ? _react2.default.createElement(
+    user => !user ? _react2.default.createElement(
+      'div',
+      { key: 'home-not-connected', className: 'home-not-connected' },
+      _react2.default.createElement('div', { className: 'picture' }),
+      _react2.default.createElement(
+        'main',
+        { className: 'main-container' },
+        _react2.default.createElement(
+          'h1',
+          { className: 'page-title' },
+          _react2.default.createElement(_reactAlpTranslate2.default, { id: 'home.notConnected.title' })
+        ),
+        _react2.default.createElement(_reactAlpLogin.LoginButtons, null)
+      )
+    ) : _react2.default.createElement(
+      _reactAlpSubscribeContainer2.default,
+      { name: 'raspberries' },
+      _react2.default.createElement(
         'div',
-        { key: 'home-not-connected', className: 'home-not-connected' },
-        _react2.default.createElement('div', { className: 'picture' }),
-        _react2.default.createElement(
-          'main',
-          { className: 'main-container' },
-          _react2.default.createElement(
-            'h1',
-            { className: 'page-title' },
-            _react2.default.createElement(_reactAlpTranslate2.default, { id: 'home.notConnected.title' })
-          ),
-          _react2.default.createElement(_reactAlpLogin.LoginButtons, null)
-        )
-      ) : _react2.default.createElement(
-        _reactAlpSubscribeContainer2.default,
-        { name: 'raspberries' },
-        _react2.default.createElement(
-          'div',
-          null,
-          _react2.default.createElement(_UnknownRaspberryListComponent2.default, {
-            key: 'unknown',
-            raspberries: unknownRaspberries,
-            offlineRaspberries: registeredRaspberries.filter(r => !r.online),
-            registerUnknown: registerUnknown,
-            sendAction: sendAction
-          }),
-          _react2.default.createElement(_RaspberryListComponent2.default, {
-            key: 'known',
-            raspberries: registeredRaspberries,
-            changeConfig: changeConfig,
-            sendAction: sendAction
-          })
-        )
+        null,
+        _react2.default.createElement(_UnknownRaspberryListComponent2.default, {
+          key: 'unknown',
+          raspberries: unknownRaspberries,
+          offlineRaspberries: registeredRaspberries.filter(r => !r.online),
+          registerUnknown: registerUnknown,
+          sendAction: sendAction
+        }),
+        _react2.default.createElement(_RaspberryListComponent2.default, {
+          key: 'known',
+          raspberries: registeredRaspberries,
+          changeConfig: changeConfig,
+          sendAction: sendAction
+        })
       )
     )
-  );
-};
+  )
+);
 
-exports.default = (0, _alpReactRedux.connect)((_ref2) => {
-  let raspberries = _ref2.raspberries;
-  return {
-    registeredRaspberries: raspberries.filter(r => r.registered),
-    unknownRaspberries: raspberries.filter(r => !r.registered)
-  };
-}, raspberriesActions)(IndexView);
+exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({
+  registeredRaspberries: raspberries.filter(r => r.registered),
+  unknownRaspberries: raspberries.filter(r => !r.registered)
+}), raspberriesActions)(IndexView);
 //# sourceMappingURL=IndexView.js.map

@@ -246,11 +246,7 @@ function changeConfig(raspberry, config) {
   return newConfig;
 }
 
-function add(id, userId, _ref) {
-  let name = _ref.name,
-      addOrReplace = _ref.addOrReplace,
-      replaceId = _ref.id;
-
+function add(id, userId, { name, addOrReplace, id: replaceId }) {
   logger.log('add', { id, name, addOrReplace, replaceId });
   const raspberry = getById(id);
   if (!raspberry) {

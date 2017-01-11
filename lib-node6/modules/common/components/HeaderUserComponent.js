@@ -23,9 +23,7 @@ HeaderUserComponent.contextTypes = {
   context: _react.PropTypes.object
 };
 
-function HeaderUserComponent(props, _ref) {
-  let user = _ref.context.state.user;
-
+function HeaderUserComponent(props, { context: { state: { user } } }) {
   if (user) {
     return _react2.default.createElement(
       'div',
