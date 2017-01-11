@@ -73,13 +73,14 @@ sudo /etc/init.d/kbd restart
 ##
 displayTitle 'Install dependencies'
 
-# git
+# xorg: to use X
+# git: to clone repo
 # unclutter: hide the mouse cursor
 # xdotool: emulate keyboard key
 # supervisor: keep node client alive
 # livestreamer: display videos from internet
 # omxplayer: display videos
-sudo apt-get install -y git unclutter xdotool supervisor xinit openbox livestreamer omxplayer
+sudo apt-get install -y xorg git unclutter xdotool supervisor xinit openbox livestreamer omxplayer
 
 ##
 # Install raspi2png
