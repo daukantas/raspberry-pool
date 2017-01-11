@@ -1,3 +1,9 @@
+### v5.3.0
+
+- [`60929a5`](https://github.com/christophehurpeau/raspberry-pool/commit/60929a51c28f8026afa8145318d5c88f512c1dd6) fix: add git as depencendy (DarzuL)
+- [`860183b`](https://github.com/christophehurpeau/raspberry-pool/commit/860183bd7f171e5b526b7094e00ab679678da116) fix: add xorg as dependency (DarzuL)
+- [`4077d28`](https://github.com/christophehurpeau/raspberry-pool/commit/4077d289f1bf8ead1c795909fdce72b3691e0ab8) build (Christophe Hurpeau)
+
 ### v5.2.0
 
 - [`4d616af`](https://github.com/christophehurpeau/raspberry-pool/commit/4d616af38c8c43e1e3692f27b21d57051ae972b2) Fix path to install raspi2png because the last Raspian version doesn't have /usr/local dir (DarzuL)
