@@ -1,6 +1,15 @@
 import { createAction } from 'alp-react-redux/src';
 import type { RaspberryType, RaspberryConfigType } from '../types';
 
+type RegisterDataType = { name: string, addOrReplace: boolean, id: string };
+
+export type SendActionFunctionType =
+  (raspberries: Array<RaspberryType>, action: string) => () => Promise;
+export type ChangeConfigFunctionType =
+  (raspberry: RaspberryType, newConfig: RaspberryConfigType) => () => Promise;
+export type RegisterUnknownFunctionType =
+  (raspberry: RaspberryType, config: RegisterDataType) => () => Promise;
+
 export const updateAll = createAction('UPDATE_ALL_RASPBERRIES', raspberries => ({ raspberries }));
 export const add = createAction('ADD_RASPBERRY', raspberry => ({ raspberry }));
 export const update = createAction('UPDATE_RASPBERRY', raspberry => ({ id: raspberry.id, raspberry }));
@@ -41,7 +50,10 @@ export function sendAction(raspberries: Array<RaspberryType>, action: string) {
   };
 }
 
-export function registerUnknown(raspberry: RaspberryType, { name, addOrReplace, id }) {
+export function registerUnknown(
+  raspberry: RaspberryType,
+  { name, addOrReplace, id }: RegisterDataType
+) {
   return async (dispatch: Function, { websocket }) => {
     dispatch(saving(raspberry));
     const newRaspberry = await websocket.emit('raspberry:registerUnknown', raspberry.id, { name, addOrReplace, id });

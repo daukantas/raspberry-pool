@@ -11,9 +11,9 @@
     "raspberry"
   ],
   "scripts": {
-    "lint": "eslint --ext .js,.jsx --fix src/",
+    "lint": "eslint --ext .js,.jsx src/",
     "build": "alp-dev-build",
-    "preversion": "npm run lint || true && pob-repository-check-clean",
+    "preversion": "pob-repository-check-clean",
     "release": "npm run build && pob-repository-check-clean && pob-release",
     "version": "pob-version"
   },
@@ -22,17 +22,17 @@
     "alp-auth": "^0.8.0",
     "alp-browser": "^0.21.1",
     "alp-limosa": "^2.5.0",
-    "alp-node": "^0.26.0",
+    "alp-node": "^0.27.0",
     "alp-react-redux": "^6.0.1",
     "alp-websocket": "^3.8.0",
     "babel-regenerator-runtime": "^6.5.0",
     "koa-sendfile": "^2.0.0",
-    "liwi": "^0.9.2",
+    "liwi": "^0.13.2",
     "nightingale": "^6.0.0",
     "nightingale-browser-console": "^1.0.1",
     "nightingale-console": "^2.1.0",
     "nightingale-error-processor": "^2.0.0",
-    "pob-release": "^2.2.2",
+    "pob-release": "^3.0.0",
     "react": "^15.3.2",
     "react-alp-link": "^0.3.1",
     "react-alp-login": "^0.4.1",
@@ -44,14 +44,15 @@
     "turaco-styl": "0.14.0"
   },
   "devDependencies": {
-    "alp-dev": "^4.0.1",
+    "alp-dev": "^7.0.0",
     "babel-eslint": "^7.1.0",
     "eslint": "^3.9.1",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-config-pob": "^9.0.1",
+    "eslint-config-airbnb": "^14.0.0",
+    "eslint-config-pob": "^10.0.1",
+    "eslint-plugin-babel": "^4.0.0",
     "eslint-plugin-flowtype": "^2.25.0",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.5.0",
     "tcomb-forked": "^3.4.0"
   }

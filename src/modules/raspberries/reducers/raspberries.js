@@ -1,4 +1,4 @@
-import { createReducer } from 'alp-react-redux';
+import { createReducer } from 'alp-react-redux/src';
 
 import {
   updateAll,

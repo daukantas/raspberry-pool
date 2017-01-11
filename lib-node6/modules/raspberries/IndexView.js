@@ -24,9 +24,9 @@ var _reactAlpSubscribeContainer2 = _interopRequireDefault(_reactAlpSubscribeCont
 
 var _reactAlpLogin = require('react-alp-login');
 
-var _HeaderComponent = require('./components/HeaderComponent');
+var _Header = require('./components/Header');
 
-var _HeaderComponent2 = _interopRequireDefault(_HeaderComponent);
+var _Header2 = _interopRequireDefault(_Header);
 
 var _RaspberryListComponent = require('./components/RaspberryListComponent');
 
@@ -36,21 +36,9 @@ var _UnknownRaspberryListComponent = require('./components/UnknownRaspberryListC
 
 var _UnknownRaspberryListComponent2 = _interopRequireDefault(_UnknownRaspberryListComponent);
 
-var _raspberry = require('./actions/raspberry');
-
-var raspberriesActions = _interopRequireWildcard(_raspberry);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const IndexView = ({
-  unknownRaspberries,
-  registeredRaspberries,
-  sendAction,
-  changeConfig,
-  registerUnknown
-}) => _react2.default.createElement(
+exports.default = () => _react2.default.createElement(
   'div',
   null,
   _react2.default.createElement(
@@ -58,10 +46,7 @@ const IndexView = ({
     { id: 'raspberry-pool.title' },
     t => _react2.default.createElement(_alpReactRedux.Helmet, { title: t })
   ),
-  _react2.default.createElement(_HeaderComponent2.default, {
-    raspberries: registeredRaspberries,
-    sendAction: sendAction
-  }),
+  _react2.default.createElement(_Header2.default, null),
   _react2.default.createElement(
     _reactAlpUser2.default,
     null,
@@ -85,26 +70,10 @@ const IndexView = ({
       _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_UnknownRaspberryListComponent2.default, {
-          key: 'unknown',
-          raspberries: unknownRaspberries,
-          offlineRaspberries: registeredRaspberries.filter(r => !r.online),
-          registerUnknown: registerUnknown,
-          sendAction: sendAction
-        }),
-        _react2.default.createElement(_RaspberryListComponent2.default, {
-          key: 'known',
-          raspberries: registeredRaspberries,
-          changeConfig: changeConfig,
-          sendAction: sendAction
-        })
+        _react2.default.createElement(_UnknownRaspberryListComponent2.default, null),
+        _react2.default.createElement(_RaspberryListComponent2.default, null)
       )
     )
   )
 );
-
-exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({
-  registeredRaspberries: raspberries.filter(r => r.registered),
-  unknownRaspberries: raspberries.filter(r => !r.registered)
-}), raspberriesActions)(IndexView);
 //# sourceMappingURL=IndexView.js.map

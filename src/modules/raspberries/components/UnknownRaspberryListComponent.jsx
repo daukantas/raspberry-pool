@@ -1,33 +1,23 @@
-import { Component, PropTypes } from 'react';
-import shouldPureComponentUpdate from 'react-pure-render/function';
+import { connect } from 'alp-react-redux/src';
 import UnknownRaspberry from './UnknownRaspberryComponent';
+import type { RaspberryType } from '../types';
 
-export default class UnknownRaspberryListComponent extends Component {
-  static propTypes = {
-    raspberries: PropTypes.array.isRequired,
-    offlineRaspberries: PropTypes.array.isRequired,
-    registerUnknown: PropTypes.func.isRequired,
-    sendAction: PropTypes.func.isRequired,
-  };
+type PropsType = {
+  raspberries: Array<RaspberryType>,
+};
 
-  shouldComponentUpdate = shouldPureComponentUpdate;
-
-  render() {
-    const { raspberries, offlineRaspberries, registerUnknown, sendAction } = this.props;
-
-    if (!raspberries.length) {
-      return null;
-    }
-
-    return (<ul className="raspberry-list">
-      {raspberries.map(raspberry => <li key={raspberry.id} className="raspberry-item">
-        <UnknownRaspberry
-          raspberry={raspberry}
-          offlineRaspberries={offlineRaspberries}
-          registerUnknown={registerUnknown}
-          sendAction={sendAction}
-        />
-      </li>)}
-    </ul>);
+export default connect(({ raspberries }) => ({
+  raspberries: raspberries.filter(r => !r.registered),
+}))(({ raspberries }: PropsType) => {
+  if (!raspberries.length) {
+    return null;
   }
-}
+
+  return (
+    <ul className="raspberry-list">
+      {raspberries.map(raspberry => <li key={raspberry.id} className="raspberry-item">
+        <UnknownRaspberry raspberry={raspberry} />
+      </li>)}
+    </ul>
+  );
+});

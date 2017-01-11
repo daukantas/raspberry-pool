@@ -8,6 +8,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _alpReactRedux = require('alp-react-redux');
+
 var _reactAlpTranslate = require('react-alp-translate');
 
 var _reactAlpTranslate2 = _interopRequireDefault(_reactAlpTranslate);
@@ -20,17 +22,22 @@ var _SpinnerComponent = require('../../common/components/SpinnerComponent');
 
 var _SpinnerComponent2 = _interopRequireDefault(_SpinnerComponent);
 
+var _raspberry = require('../actions/raspberry');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-class UnknownRaspberryComponent extends _react.PureComponent {
-  constructor(...args) {
-    var _temp;
+exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({
+  offlineRaspberries: raspberries.filter(r => r.registered && !r.online)
+}), { registerUnknown: _raspberry.registerUnknown })(class UnknownRaspberryComponent extends _react.Component {
 
-    return _temp = super(...args), this.state = {}, _temp;
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
   render() {
-    const { raspberry, registerUnknown, offlineRaspberries } = this.props;
+    const { raspberry, offlineRaspberries, registerUnknown } = this.props;
 
     return _react2.default.createElement(
       'div',
@@ -189,11 +196,5 @@ class UnknownRaspberryComponent extends _react.PureComponent {
             }}>Blink</button>
     */
   }
-}
-exports.default = UnknownRaspberryComponent;
-UnknownRaspberryComponent.propTypes = {
-  raspberry: _react.PropTypes.object.isRequired,
-  offlineRaspberries: _react.PropTypes.array.isRequired,
-  registerUnknown: _react.PropTypes.func.isRequired
-};
+});
 //# sourceMappingURL=UnknownRaspberryComponent.js.map

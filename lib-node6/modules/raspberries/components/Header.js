@@ -8,6 +8,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _alpReactRedux = require('alp-react-redux');
+
 var _reactAlpTranslate = require('react-alp-translate');
 
 var _reactAlpTranslate2 = _interopRequireDefault(_reactAlpTranslate);
@@ -16,9 +18,9 @@ var _reactAlpLink = require('react-alp-link');
 
 var _reactAlpLink2 = _interopRequireDefault(_reactAlpLink);
 
-var _ActionsComponent = require('./raspberry/ActionsComponent');
+var _Actions = require('./raspberry/Actions');
 
-var _ActionsComponent2 = _interopRequireDefault(_ActionsComponent);
+var _Actions2 = _interopRequireDefault(_Actions);
 
 var _HeaderUserComponent = require('../../common/components/HeaderUserComponent');
 
@@ -26,7 +28,7 @@ var _HeaderUserComponent2 = _interopRequireDefault(_HeaderUserComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const HeaderComponent = ({ raspberries, sendAction }) => _react2.default.createElement(
+exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({ onlineRaspberries: raspberries.filter(r => r.registered && r.online) }))(({ onlineRaspberries }) => _react2.default.createElement(
   'header',
   { className: 'header row space-between' },
   _react2.default.createElement(
@@ -42,23 +44,12 @@ const HeaderComponent = ({ raspberries, sendAction }) => _react2.default.createE
       { to: 'default', params: { controller: 'install' }, className: 'button flat' },
       _react2.default.createElement(_reactAlpTranslate2.default, { id: 'header.installClientLink' })
     ),
-    _react2.default.createElement(_ActionsComponent2.default, { flat: true, raspberries: raspberries, sendAction: sendAction })
+    _react2.default.createElement(_Actions2.default, { flat: true, raspberries: onlineRaspberries })
   ),
   _react2.default.createElement(
     'div',
     { className: 'end' },
     _react2.default.createElement(_HeaderUserComponent2.default, null)
   )
-);
-
-HeaderComponent.propTypes = {
-  raspberries: _react.PropTypes.array,
-  sendAction: _react.PropTypes.func.isRequired
-};
-
-HeaderComponent.contextTypes = {
-  context: _react.PropTypes.object.isRequired
-};
-
-exports.default = HeaderComponent;
-//# sourceMappingURL=HeaderComponent.js.map
+));
+//# sourceMappingURL=Header.js.map

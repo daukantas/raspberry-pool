@@ -19,6 +19,7 @@ export function emit(mac: string | boolean, eventName: string, ...data?: Array<a
 }
 
 export function broadcastToRoom(room: string, eventName: string, ...data?: Array<any>) {
+  if (clients.size === 0) return;
   logger.debug('broadcast room', { room, eventName, data });
   ns.to(room).emit(eventName, ...data);
 }

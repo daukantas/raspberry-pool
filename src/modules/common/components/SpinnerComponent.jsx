@@ -1,12 +1,11 @@
-import { PropTypes } from 'react';
-
-SpinnerComponent.propTypes = {
-  active: PropTypes.bool,
+type PropsType = {
+  className: ?string,
+  active: ?boolean,
 };
 
-export default function SpinnerComponent({ active }) {
-  return (<div className={`spinner${active ? ' active' : ''}`}>
+export default ({ active, className }: PropsType) => (
+  <div className={['spinner', active && 'active', className].filter(Boolean).join(' ')}>
     <div className="double-bounce1" />
     <div className="double-bounce2" />
-  </div>);
-}
+  </div>
+);
