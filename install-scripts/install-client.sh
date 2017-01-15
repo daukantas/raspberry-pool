@@ -86,7 +86,7 @@ sudo apt-get install -y xorg git unclutter xdotool supervisor xinit openbox live
 # Install raspi2png
 # Screenshot tool working with Livestreamer and Omxplayer
 ##
-sudo apt-get install libpng12-dev
+sudo apt-get install -y libpng12-dev
 git clone https://github.com/AndrewFromMelbourne/raspi2png.git
 cd raspi2png
 make
