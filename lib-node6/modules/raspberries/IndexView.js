@@ -10,10 +10,6 @@ var _react2 = _interopRequireDefault(_react);
 
 var _alpReactRedux = require('alp-react-redux');
 
-var _reactAlpUser = require('react-alp-user');
-
-var _reactAlpUser2 = _interopRequireDefault(_reactAlpUser);
-
 var _reactAlpTranslate = require('react-alp-translate');
 
 var _reactAlpTranslate2 = _interopRequireDefault(_reactAlpTranslate);
@@ -38,7 +34,7 @@ var _UnknownRaspberryListComponent2 = _interopRequireDefault(_UnknownRaspberryLi
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = () => _react2.default.createElement(
+exports.default = (0, _alpReactRedux.connect)(({ context: { state: { user } } }) => ({ user }))(({ user }) => _react2.default.createElement(
   'div',
   null,
   _react2.default.createElement(
@@ -47,33 +43,29 @@ exports.default = () => _react2.default.createElement(
     t => _react2.default.createElement(_alpReactRedux.Helmet, { title: t })
   ),
   _react2.default.createElement(_Header2.default, null),
-  _react2.default.createElement(
-    _reactAlpUser2.default,
-    null,
-    user => !user ? _react2.default.createElement(
+  !user ? _react2.default.createElement(
+    'div',
+    { key: 'home-not-connected', className: 'home-not-connected' },
+    _react2.default.createElement('div', { className: 'picture' }),
+    _react2.default.createElement(
+      'main',
+      { className: 'main-container' },
+      _react2.default.createElement(
+        'h1',
+        { className: 'page-title' },
+        _react2.default.createElement(_reactAlpTranslate2.default, { id: 'home.notConnected.title' })
+      ),
+      _react2.default.createElement(_reactAlpLogin.LoginButtons, null)
+    )
+  ) : _react2.default.createElement(
+    _reactAlpSubscribeContainer2.default,
+    { name: 'raspberries' },
+    _react2.default.createElement(
       'div',
-      { key: 'home-not-connected', className: 'home-not-connected' },
-      _react2.default.createElement('div', { className: 'picture' }),
-      _react2.default.createElement(
-        'main',
-        { className: 'main-container' },
-        _react2.default.createElement(
-          'h1',
-          { className: 'page-title' },
-          _react2.default.createElement(_reactAlpTranslate2.default, { id: 'home.notConnected.title' })
-        ),
-        _react2.default.createElement(_reactAlpLogin.LoginButtons, null)
-      )
-    ) : _react2.default.createElement(
-      _reactAlpSubscribeContainer2.default,
-      { name: 'raspberries' },
-      _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(_UnknownRaspberryListComponent2.default, null),
-        _react2.default.createElement(_RaspberryListComponent2.default, null)
-      )
+      null,
+      _react2.default.createElement(_UnknownRaspberryListComponent2.default, null),
+      _react2.default.createElement(_RaspberryListComponent2.default, null)
     )
   )
-);
+));
 //# sourceMappingURL=IndexView.js.map

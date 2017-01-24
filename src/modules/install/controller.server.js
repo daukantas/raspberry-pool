@@ -1,6 +1,6 @@
 import { newController } from 'alp';
 import { readdirSync, readFileSync } from 'fs';
-import InstallView from './InstallView';
+import * as moduleDescriptor from './descriptor';
 
 const installScriptsDir = `${__dirname}/../../../install-scripts/`;
 const date = new Date();
@@ -15,7 +15,7 @@ const scripts = new Map(
 export default newController({
   index(ctx) {
     const websocketPort = ctx.app.config.get('webSocket').get('port');
-    ctx.render({ View: InstallView }, { hostname: ctx.request.origin, websocketPort });
+    ctx.render(moduleDescriptor, { hostname: ctx.request.origin, websocketPort });
   },
 
   script(ctx) {

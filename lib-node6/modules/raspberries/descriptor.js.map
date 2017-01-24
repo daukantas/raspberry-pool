@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/modules/raspberries/descriptor.js"],"names":["identifier","View","reducers"],"mappings":";;;;;;;;;;;;;;;;;;;AAAO,MAAMA,kCAAa,aAAnB;QACAC,I;QACKC,Q","file":"descriptor.js","sourcesContent":["export const identifier = 'raspberries';\nexport View from './IndexView';\nexport * as reducers from './reducers';\n"]}

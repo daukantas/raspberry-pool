@@ -14,10 +14,6 @@ var _reactAlpTranslate = require('react-alp-translate');
 
 var _reactAlpTranslate2 = _interopRequireDefault(_reactAlpTranslate);
 
-var _reactAlpUser = require('react-alp-user');
-
-var _reactAlpUser2 = _interopRequireDefault(_reactAlpUser);
-
 var _SpinnerComponent = require('../../common/components/SpinnerComponent');
 
 var _SpinnerComponent2 = _interopRequireDefault(_SpinnerComponent);
@@ -26,7 +22,8 @@ var _raspberry = require('../actions/raspberry');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({
+exports.default = (0, _alpReactRedux.connect)(({ context: { state: { user } }, raspberries }) => ({
+  user,
   offlineRaspberries: raspberries.filter(r => r.registered && !r.online)
 }), { registerUnknown: _raspberry.registerUnknown })(class UnknownRaspberryComponent extends _react.Component {
 
@@ -37,7 +34,7 @@ exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({
   }
 
   render() {
-    const { raspberry, offlineRaspberries, registerUnknown } = this.props;
+    const { user, raspberry, offlineRaspberries, registerUnknown } = this.props;
 
     return _react2.default.createElement(
       'div',
@@ -150,22 +147,18 @@ exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({
             )
           )],
           _react2.default.createElement(
-            _reactAlpUser2.default,
-            null,
-            user => _react2.default.createElement(
-              'select',
-              {
-                disabled: !this.state.addOrReplace,
-                name: 'raspberry',
-                onChange: e => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })
-              },
-              !this.state.id && _react2.default.createElement('option', { key: '__empty' }),
-              offlineRaspberries.filter(r => r.data.owner === user.id).map(r => _react2.default.createElement(
-                'option',
-                { key: r.id, value: r.id },
-                r.data.name
-              ))
-            )
+            'select',
+            {
+              disabled: !this.state.addOrReplace,
+              name: 'raspberry',
+              onChange: e => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })
+            },
+            !this.state.id && _react2.default.createElement('option', { key: '__empty' }),
+            offlineRaspberries.filter(r => r.data.owner === user.id).map(r => _react2.default.createElement(
+              'option',
+              { key: r.id, value: r.id },
+              r.data.name
+            ))
           )
         )
       ),

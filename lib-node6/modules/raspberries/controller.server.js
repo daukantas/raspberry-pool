@@ -10,9 +10,9 @@ var _koaSendfile = require('koa-sendfile');
 
 var _koaSendfile2 = _interopRequireDefault(_koaSendfile);
 
-var _ = require('./');
+var _descriptor = require('./descriptor');
 
-var raspberriesDescriptor = _interopRequireWildcard(_);
+var raspberriesDescriptor = _interopRequireWildcard(_descriptor);
 
 var _raspberriesManager = require('./raspberriesManager.server');
 

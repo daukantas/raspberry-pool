@@ -13,9 +13,10 @@ type PropsType = {
   changeConfig: ChangeConfigFunctionType,
 };
 
-export default connect(null, {
-  changeConfig,
-})(class Raspberry extends Component {
+export default connect(
+  null, // { raspberries:  },
+  { changeConfig, }
+)(class Raspberry extends Component {
   constructor(props: PropsType) {
     super(props);
     this.state = {};

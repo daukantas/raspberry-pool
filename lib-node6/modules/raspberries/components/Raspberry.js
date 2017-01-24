@@ -30,9 +30,8 @@ var _Raspberry2 = _interopRequireDefault(_Raspberry);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = (0, _alpReactRedux.connect)(null, {
-  changeConfig: _raspberry.changeConfig
-})(class Raspberry extends _react.Component {
+exports.default = (0, _alpReactRedux.connect)(null, // { raspberries:  },
+{ changeConfig: _raspberry.changeConfig })(class Raspberry extends _react.Component {
   constructor(props) {
     super(props);
     this.state = {};

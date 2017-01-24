@@ -1,6 +1,6 @@
 import { newController } from 'alp';
 import send from 'koa-sendfile';
-import * as raspberriesDescriptor from './';
+import * as raspberriesDescriptor from './descriptor';
 import * as raspberriesManager from './raspberriesManager.server';
 
 export default newController({

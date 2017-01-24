@@ -16,4 +16,5 @@ Object.defineProperty(exports, 'View', {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const identifier = exports.identifier = 'login';
+const reducers = exports.reducers = {};
 //# sourceMappingURL=descriptor.js.map

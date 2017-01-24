@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { connect } from 'alp-react-redux/src';
 import T from 'react-alp-translate/src';
-import User from 'react-alp-user/src';
+import type { UserBrowserType } from 'alp-auth/src/types';
 import type { ReactNodeType } from 'alp-react-redux/src/types';
 import Spinner from '../../common/components/SpinnerComponent';
 import { registerUnknown } from '../actions/raspberry';
@@ -9,13 +9,15 @@ import type { RaspberryType } from '../types';
 import type { RegisterUnknownFunctionType } from '../actions/raspberry';
 
 type PropsType = {
+  user: UserBrowserType,
   raspberry: RaspberryType,
   offlineRaspberries: Array<RaspberryType>,
   registerUnknown: RegisterUnknownFunctionType,
 };
 
 export default connect(
-  ({ raspberries }) => ({
+  ({ context: { state: { user } }, raspberries }) => ({
+    user,
     offlineRaspberries: raspberries.filter(r => r.registered && !r.online),
   }),
   { registerUnknown },
@@ -28,7 +30,7 @@ export default connect(
   }
 
   render(): ReactNodeType {
-    const { raspberry, offlineRaspberries, registerUnknown } = this.props;
+    const { user, raspberry, offlineRaspberries, registerUnknown } = this.props;
 
     return (
       <div className="raspberry unknown">
@@ -97,18 +99,16 @@ export default connect(
                 </label>
               </div>,
             ]}
-            <User>{user => (
-              <select
-                disabled={!this.state.addOrReplace}
-                name="raspberry"
-                onChange={(e) => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })}
-              >
-                {!this.state.id && <option key="__empty" />}
-                {offlineRaspberries.filter(r => r.data.owner === user.id).map(r => (
-                  <option key={r.id} value={r.id}>{r.data.name}</option>
-                ))}
-              </select>
-            )}</User>
+            <select
+              disabled={!this.state.addOrReplace}
+              name="raspberry"
+              onChange={(e) => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })}
+            >
+              {!this.state.id && <option key="__empty" />}
+              {offlineRaspberries.filter(r => r.data.owner === user.id).map(r => (
+                <option key={r.id} value={r.id}>{r.data.name}</option>
+              ))}
+            </select>
           </div>
         </div>
 

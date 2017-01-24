@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../src/modules/install/descriptor.js"],"names":["identifier","View"],"mappings":";;;;;;;;;;;;;AAAO,MAAMA,kCAAa,SAAnB;QACAC,I","file":"descriptor.js","sourcesContent":["export const identifier = 'install';\nexport View from './InstallView';\n"]}
