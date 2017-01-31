@@ -55,7 +55,7 @@ data.items.forEach(item => {
   map.set(item.id, raspberry);
   item.macAddresses.forEach(mac => {
     if (mapByMac.has(mac)) {
-      throw new Error(`Mac defined more than one: ${ mac }`);
+      throw new Error(`Mac defined more than one: ${mac}`);
     }
 
     mapByMac.set(mac, raspberry);

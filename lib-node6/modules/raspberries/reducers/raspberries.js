@@ -34,7 +34,7 @@ const raspberryReducer = (0, _alpReactRedux.createReducer)({
 });
 
 const raspberryHandler = (raspberries, action) => {
-  if (!action.id) throw new Error(`Missing action.id, ${ action.type }`);
+  if (!action.id) throw new Error(`Missing action.id, ${action.type}`);
   return raspberries.map(raspberry => {
     if (raspberry.id !== action.id) return raspberry;
     return raspberryReducer(raspberry, action);

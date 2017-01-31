@@ -37,11 +37,11 @@ function init(io, app) {
 }
 
 function broadcastAction(raspberry, action) {
-  const room = !raspberry.data ? `id#${ raspberry.userId }` : raspberry.data.organisation || `id#${ raspberry.data.owner }`;
+  const room = !raspberry.data ? `id#${raspberry.userId}` : raspberry.data.organisation || `id#${raspberry.data.owner}`;
 
   logger.info('broadcast', _extends({ room }, action));
   if (room) {
-    (0, _alpReactRedux.emitAction)(clientNs.to(`raspberries_${ room }`), action);
+    (0, _alpReactRedux.emitAction)(clientNs.to(`raspberries_${room}`), action);
   }
 }
 
@@ -61,12 +61,12 @@ function onConnection(socket, app) {
   });
 
   (0, _alpWebsocket.subscribe)(socket, 'raspberries', () => {
-    socket.join(`raspberries_id#${ user.id }`);
-    user.emailDomains.forEach(domain => socket.join(`raspberries_${ domain }`));
+    socket.join(`raspberries_id#${user.id}`);
+    user.emailDomains.forEach(domain => socket.join(`raspberries_${domain}`));
     (0, _alpReactRedux.emitAction)(socket, (0, _raspberry.updateAll)(raspberriesManager.getAll(user)));
   }, () => {
-    socket.leave(`raspberries_id#${ user.id }`);
-    user.emailDomains.forEach(domain => socket.leave(`raspberries_${ domain }`));
+    socket.leave(`raspberries_id#${user.id}`);
+    user.emailDomains.forEach(domain => socket.leave(`raspberries_${domain}`));
   });
 
   socket.on('raspberry:changeConfig', (id, config, callback) => {

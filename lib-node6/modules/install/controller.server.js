@@ -14,11 +14,11 @@ var _InstallView2 = _interopRequireDefault(_InstallView);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const installScriptsDir = `${ __dirname }/../../../install-scripts/`;
+const installScriptsDir = `${__dirname}/../../../install-scripts/`;
 const date = new Date();
 const CONFIG_PLACEHOLDER = '### SERVER CONFIG WILL BE INJECTED HERE ###';
 
-const scripts = new Map((0, _fs.readdirSync)(installScriptsDir).filter(filename => filename.endsWith('.sh')).map(filename => [filename.slice(0, -3), (0, _fs.readFileSync)(`${ installScriptsDir }${ filename }`).toString()]));
+const scripts = new Map((0, _fs.readdirSync)(installScriptsDir).filter(filename => filename.endsWith('.sh')).map(filename => [filename.slice(0, -3), (0, _fs.readFileSync)(`${installScriptsDir}${filename}`).toString()]));
 
 exports.default = (0, _alp.newController)({
   index(ctx) {
@@ -34,9 +34,9 @@ exports.default = (0, _alp.newController)({
     ctx.set('Last-Modified', date.toUTCString());
 
     if (scriptName === 'install-raspberry') {
-      scriptBody = scriptBody.replace(CONFIG_PLACEHOLDER, `URL="${ ctx.request.origin }/install-scripts/"`);
+      scriptBody = scriptBody.replace(CONFIG_PLACEHOLDER, `URL="${ctx.request.origin}/install-scripts/"`);
     } else if (scriptName === 'install-client') {
-      scriptBody = scriptBody.replace(CONFIG_PLACEHOLDER, `SERVER_HOSTNAME="${ ctx.request.origin }"\nSERVER_PORT=${ ctx.app.config.get('webSocket').get('port') }`);
+      scriptBody = scriptBody.replace(CONFIG_PLACEHOLDER, `SERVER_HOSTNAME="${ctx.request.origin}"\nSERVER_PORT=${ctx.app.config.get('webSocket').get('port')}`);
     }
 
     ctx.body = scriptBody;

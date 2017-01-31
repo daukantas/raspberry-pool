@@ -20,33 +20,31 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //   postBody: PropTypes.element,
 // };
 
-exports.default = function simpleLayout({ title = '', description = '', body, preBody, postBody }) {
-  return _react2.default.createElement(
-    'html',
-    { lang: 'en' },
+exports.default = ({ title = '', description = '', body, preBody, postBody }) => _react2.default.createElement(
+  'html',
+  { lang: 'en' },
+  _react2.default.createElement(
+    'head',
+    null,
+    _react2.default.createElement('meta', { charSet: 'utf-8' }),
+    _react2.default.createElement('meta', { httpEquiv: 'X-UA-Compatible', content: 'IE=edge' }),
     _react2.default.createElement(
-      'head',
+      'title',
       null,
-      _react2.default.createElement('meta', { charSet: 'utf-8' }),
-      _react2.default.createElement('meta', { httpEquiv: 'X-UA-Compatible', content: 'IE=edge' }),
-      _react2.default.createElement(
-        'title',
-        null,
-        title
-      ),
-      _react2.default.createElement('meta', { name: 'description', content: description }),
-      _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
-      _react2.default.createElement('link', { href: 'https://fonts.googleapis.com/css?family=Roboto:400,700,500,300,100,500italic,400italic,700italic', rel: 'stylesheet', type: 'text/css' }),
-      _react2.default.createElement('link', { rel: 'stylesheet', href: '/index.css' })
+      title
     ),
-    _react2.default.createElement(
-      'body',
-      null,
-      preBody,
-      _react2.default.createElement('div', { id: 'app', dangerouslySetInnerHTML: { __html: body } }),
-      postBody
-    )
-  );
-}; /* eslint-disable react/no-danger */
+    _react2.default.createElement('meta', { name: 'description', content: description }),
+    _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
+    _react2.default.createElement('link', { href: 'https://fonts.googleapis.com/css?family=Roboto:400,700,500,300,100,500italic,400italic,700italic', rel: 'stylesheet', type: 'text/css' }),
+    _react2.default.createElement('link', { rel: 'stylesheet', href: '/index.css' })
+  ),
+  _react2.default.createElement(
+    'body',
+    null,
+    preBody,
+    _react2.default.createElement('div', { id: 'app', dangerouslySetInnerHTML: { __html: body } }),
+    postBody
+  )
+); /* eslint-disable react/no-danger */
 // import type { ReactElement } from 'alp-react-redux/src/types';
 //# sourceMappingURL=SimpleLayout.js.map

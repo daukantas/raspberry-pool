@@ -78,13 +78,13 @@ class UnknownRaspberryComponent extends _react.PureComponent {
               type: 'text',
               required: true,
               autoComplete: 'off',
-              className: `${ this.state.name === undefined ? '' : `has-value${ this.state.name ? '' : ' has-empty-value' }` }`,
+              className: `${this.state.name === undefined ? '' : `has-value${this.state.name ? '' : ' has-empty-value'}`}`,
               value: this.state.name,
               onChange: e => this.setState({ name: e.target.value })
             }),
             _react2.default.createElement(
               'label',
-              { htmlFor: `raspberry-url-${ raspberry.id }` },
+              { htmlFor: `raspberry-url-${raspberry.id}` },
               'Name'
             )
           )
@@ -96,7 +96,7 @@ class UnknownRaspberryComponent extends _react.PureComponent {
             'div',
             { className: 'input radio' },
             _react2.default.createElement('input', {
-              id: `add-raspberry-${ raspberry.id }`,
+              id: `add-raspberry-${raspberry.id}`,
               name: 'addOrReplace',
               type: 'radio',
               value: '',
@@ -105,7 +105,7 @@ class UnknownRaspberryComponent extends _react.PureComponent {
             }),
             _react2.default.createElement(
               'label',
-              { htmlFor: `add-raspberry-${ raspberry.id }` },
+              { htmlFor: `add-raspberry-${raspberry.id}` },
               _react2.default.createElement(_reactAlpTranslate2.default, { id: 'unknownRaspberry.add' })
             )
           ),
@@ -113,7 +113,7 @@ class UnknownRaspberryComponent extends _react.PureComponent {
             'div',
             { key: 'addToExisting', className: 'input radio' },
             _react2.default.createElement('input', {
-              id: `add-to-existing-raspberry-${ raspberry.id }`,
+              id: `add-to-existing-raspberry-${raspberry.id}`,
               name: 'addOrReplace',
               type: 'radio',
               value: 'addToExisting',
@@ -122,14 +122,14 @@ class UnknownRaspberryComponent extends _react.PureComponent {
             }),
             _react2.default.createElement(
               'label',
-              { htmlFor: `add-to-existing-raspberry-${ raspberry.id }` },
+              { htmlFor: `add-to-existing-raspberry-${raspberry.id}` },
               _react2.default.createElement(_reactAlpTranslate2.default, { id: 'unknownRaspberry.addToExisting' })
             )
           ), _react2.default.createElement(
             'div',
             { key: 'replace', className: 'input radio' },
             _react2.default.createElement('input', {
-              id: `replace-raspberry-${ raspberry.id }`,
+              id: `replace-raspberry-${raspberry.id}`,
               name: 'addOrReplace',
               type: 'radio',
               value: 'replace',
@@ -138,7 +138,7 @@ class UnknownRaspberryComponent extends _react.PureComponent {
             }),
             _react2.default.createElement(
               'label',
-              { htmlFor: `replace-raspberry-${ raspberry.id }` },
+              { htmlFor: `replace-raspberry-${raspberry.id}` },
               _react2.default.createElement(_reactAlpTranslate2.default, { id: 'unknownRaspberry.replace' })
             )
           )],

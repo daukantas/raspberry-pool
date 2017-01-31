@@ -53,7 +53,7 @@ const app = new _alpNode2.default();
 app.start(_asyncToGenerator(function* () {
   // config / init
   app.proxy = true;
-  app.DATA_PATH = `${ __dirname }/../../data/`;
+  app.DATA_PATH = `${__dirname}/../../data/`;
   (0, _alpReactRedux2.default)(_Layout2.default)(app);
   const promiseWebsocket = (0, _index.init)(app);
 

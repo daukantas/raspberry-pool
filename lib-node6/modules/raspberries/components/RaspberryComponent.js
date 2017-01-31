@@ -65,7 +65,7 @@ class RaspberryComponent extends _react.Component {
       _react2.default.createElement(
         'div',
         { className: 'img-container' },
-        _react2.default.createElement('img', { alt: 'screenshot', src: `/screenshot.jpg?id=${ raspberry.id }&date=${ Date.now() }` })
+        _react2.default.createElement('img', { alt: 'screenshot', src: `/screenshot.jpg?id=${raspberry.id}&date=${Date.now()}` })
       ),
       _react2.default.createElement(
         'div',
@@ -76,7 +76,7 @@ class RaspberryComponent extends _react.Component {
           _react2.default.createElement(
             'span',
             {
-              className: `screen-status ${ raspberry.online ? raspberry.screenState : 'offline' }`,
+              className: `screen-status ${raspberry.online ? raspberry.screenState : 'offline'}`,
               title: raspberry.screenState === 'on' ? 'On' : 'Off'
             },
             _react2.default.createElement('span', { className: 'icon' }),
@@ -91,8 +91,8 @@ class RaspberryComponent extends _react.Component {
         { className: 'status-container' },
         _react2.default.createElement(
           'span',
-          { className: `raspberry-status label ${ raspberry.online ? 'success' : 'warning' }` },
-          !raspberry.online ? _react2.default.createElement(_reactAlpTranslate2.default, { id: 'raspberry.offline' }) : `${ raspberry.externalIp } | ${ raspberry.ip }`
+          { className: `raspberry-status label ${raspberry.online ? 'success' : 'warning'}` },
+          !raspberry.online ? _react2.default.createElement(_reactAlpTranslate2.default, { id: 'raspberry.offline' }) : `${raspberry.externalIp} | ${raspberry.ip}`
         )
       ),
       _react2.default.createElement(_ActionsComponent2.default, { raspberries: [raspberry], sendAction: sendAction }),
@@ -117,7 +117,7 @@ class RaspberryComponent extends _react.Component {
                 'select',
                 {
                   value: display,
-                  id: `raspberry-select-${ raspberry.id }`,
+                  id: `raspberry-select-${raspberry.id}`,
                   className: 'has-value',
                   onChange: e => this.setState({
                     display: raspberry.data.config.display === e.target.value ? null : e.target.value
@@ -146,7 +146,7 @@ class RaspberryComponent extends _react.Component {
               ),
               _react2.default.createElement(
                 'label',
-                { htmlFor: `raspberry-select-${ raspberry.id }` },
+                { htmlFor: `raspberry-select-${raspberry.id}` },
                 _react2.default.createElement(_reactAlpTranslate2.default, { id: 'raspberry.display' })
               )
             )
@@ -158,9 +158,9 @@ class RaspberryComponent extends _react.Component {
               'div',
               { className: 'input text' },
               _react2.default.createElement('input', {
-                id: `raspberry-url-${ raspberry.id }`,
+                id: `raspberry-url-${raspberry.id}`,
                 type: display === 'omxplayer' ? 'text' : 'url', required: true,
-                className: `has-value${ url ? '' : ' has-empty-value' }`,
+                className: `has-value${url ? '' : ' has-empty-value'}`,
                 value: url,
                 autoComplete: 'off',
                 onChange: e => this.setState({
@@ -169,7 +169,7 @@ class RaspberryComponent extends _react.Component {
               }),
               _react2.default.createElement(
                 'label',
-                { htmlFor: `raspberry-url-${ raspberry.id }` },
+                { htmlFor: `raspberry-url-${raspberry.id}` },
                 _react2.default.createElement(_reactAlpTranslate2.default, { id: display === 'omxplayer' ? 'raspberry.urlOrPath' : 'raspberry.url' })
               )
             )

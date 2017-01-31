@@ -40,7 +40,7 @@ class ActionsComponent extends _react.PureComponent {
 
     return _react2.default.createElement(
       'div',
-      { className: `actions dropdown button${ !flat ? '' : ' flat' }` },
+      { className: `actions dropdown button${!flat ? '' : ' flat'}` },
       'Actions',
       _react2.default.createElement(
         'ul',

@@ -20,8 +20,8 @@ function slugify(string) {
     return _slugify(string, { lowercase: true, separator: '-' });
 } */
 
-const dataPath = `${ __dirname }/../../../data`;
-const dataFilename = `${ dataPath }/raspberries.json`;
+const dataPath = `${__dirname}/../../../data`;
+const dataFilename = `${dataPath}/raspberries.json`;
 
 const items = exports.items = JSON.parse((0, _fs.readFileSync)(dataFilename));
 const map = new Map(items.map(item => [item.id, item]));
@@ -66,7 +66,7 @@ function addNew(id, owner, macAddresses, name) {
   };
 
   if (map.has(newRaspberryItem.id)) {
-    throw new Error(`Already has id: ${ newRaspberryItem.id }`);
+    throw new Error(`Already has id: ${newRaspberryItem.id}`);
   }
 
   items.push(newRaspberryItem);
@@ -78,7 +78,7 @@ function addNew(id, owner, macAddresses, name) {
 
 function replaceMacAddresses(id, newMacAddresses) {
   if (!map.has(id)) {
-    throw new Error(`Invalid id: "${ id }"`);
+    throw new Error(`Invalid id: "${id}"`);
   }
 
   map.get(id).macAddresses = newMacAddresses;
@@ -87,7 +87,7 @@ function replaceMacAddresses(id, newMacAddresses) {
 
 function addMacAddress(id, newMacAddress) {
   if (!map.has(id)) {
-    throw new Error(`Invalid id: "${ id }"`);
+    throw new Error(`Invalid id: "${id}"`);
   }
 
   map.get(id).macAddresses.push(newMacAddress);
@@ -99,6 +99,6 @@ function saveScreenshot(id, screenshot) {
 }
 
 function screenshotPath(id) {
-  return `${ dataPath }/screenshot-${ id }.png`;
+  return `${dataPath}/screenshot-${id}.png`;
 }
 //# sourceMappingURL=raspberriesData.server.js.map

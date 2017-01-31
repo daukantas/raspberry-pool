@@ -34,7 +34,7 @@ exports.default = (0, _alp.newController)({
     var _ref = _asyncToGenerator(function* (ctx) {
       const stats = yield (0, _koaSendfile2.default)(ctx, raspberriesManager.screenshotPath(ctx.query.id));
       if (!stats) {
-        yield (0, _koaSendfile2.default)(ctx, `${ __dirname }/../../../public/logo-210.jpg`);
+        yield (0, _koaSendfile2.default)(ctx, `${__dirname}/../../../public/logo-210.jpg`);
       }
     });
 

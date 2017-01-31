@@ -18,7 +18,7 @@ SpinnerComponent.propTypes = {
 function SpinnerComponent({ active }) {
   return _react2.default.createElement(
     'div',
-    { className: `spinner${ active ? ' active' : '' }` },
+    { className: `spinner${active ? ' active' : ''}` },
     _react2.default.createElement('div', { className: 'double-bounce1' }),
     _react2.default.createElement('div', { className: 'double-bounce2' })
   );
