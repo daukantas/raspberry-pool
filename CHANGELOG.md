@@ -1,3 +1,8 @@
+### v5.3.1
+
+- [`d77c878`](https://github.com/christophehurpeau/raspberry-pool/commit/d77c878ed6e27cbbc98bd42f6de687fd796c1439) fix(scripts): apt-get install missing -y (Christophe Hurpeau)
+- [`4b91947`](https://github.com/christophehurpeau/raspberry-pool/commit/4b91947e67bda08f3748677357a8440a572321f7) build (Christophe Hurpeau)
+
 ### v5.3.0
 
 - [`60929a5`](https://github.com/christophehurpeau/raspberry-pool/commit/60929a51c28f8026afa8145318d5c88f512c1dd6) fix: add git as depencendy (DarzuL)
