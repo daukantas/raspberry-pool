@@ -29,7 +29,7 @@ var _Actions2 = _interopRequireDefault(_Actions);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = (0, _alpReactRedux.connect)(null, { sendAction: _raspberry.sendAction })(({ raspberries, sendAction, flat }) => {
+exports.default = (0, _alpReactRedux.connect)(null, { sendAction: _raspberry.sendAction })(({ raspberries, sendAction, flat, className }) => {
   if (!raspberries || !raspberries.length) {
     return _react2.default.createElement('div', { className: _Actions2.default.actions });
   }
@@ -44,7 +44,7 @@ exports.default = (0, _alpReactRedux.connect)(null, { sendAction: _raspberry.sen
 
   return _react2.default.createElement(
     'div',
-    { className: `${ _Actions2.default.actions } dropdown button${ !flat ? '' : ' flat' }` },
+    { className: `${_Actions2.default.actions} dropdown button${!flat ? '' : ' flat'}` },
     'Actions',
     _react2.default.createElement(
       'ul',

@@ -4,6 +4,7 @@ import Link from 'react-alp-link/src';
 import Actions from './raspberry/Actions';
 import HeaderUser from '../../common/components/HeaderUserComponent';
 import type { RaspberryType } from '../types';
+import s from './Header.styl';
 
 type PropsType = {
   onlineRaspberries: Array<RaspberryType>,
@@ -12,17 +13,17 @@ type PropsType = {
 export default connect(
   ({ raspberries }) => ({ onlineRaspberries: raspberries.filter(r => r.registered && r.online) }),
 )(({ onlineRaspberries }: PropsType) => (
-  <header className="header row space-between">
-    <div>
-      <div className="logo" />
+  <header className={`header ${s.header}`}>
+    <div className={s.logoContainer} >
+      <div className={s.logo} />
     </div>
-    <div className="end">
+    <div>
       <Link to="default" params={{ controller: 'install' }} className="button flat">
         <T id="header.installClientLink" />
       </Link>
       <Actions flat raspberries={onlineRaspberries} />
     </div>
-    <div className="end">
+    <div>
       <HeaderUser />
     </div>
   </header>

@@ -26,19 +26,23 @@ var _HeaderUserComponent = require('../../common/components/HeaderUserComponent'
 
 var _HeaderUserComponent2 = _interopRequireDefault(_HeaderUserComponent);
 
+var _Header = require('./Header.styl');
+
+var _Header2 = _interopRequireDefault(_Header);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({ onlineRaspberries: raspberries.filter(r => r.registered && r.online) }))(({ onlineRaspberries }) => _react2.default.createElement(
   'header',
-  { className: 'header row space-between' },
+  { className: `header ${_Header2.default.header}` },
   _react2.default.createElement(
     'div',
-    null,
-    _react2.default.createElement('div', { className: 'logo' })
+    { className: _Header2.default.logoContainer },
+    _react2.default.createElement('div', { className: _Header2.default.logo })
   ),
   _react2.default.createElement(
     'div',
-    { className: 'end' },
+    null,
     _react2.default.createElement(
       _reactAlpLink2.default,
       { to: 'default', params: { controller: 'install' }, className: 'button flat' },
@@ -48,7 +52,7 @@ exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({ onlineRasp
   ),
   _react2.default.createElement(
     'div',
-    { className: 'end' },
+    null,
     _react2.default.createElement(_HeaderUserComponent2.default, null)
   )
 ));

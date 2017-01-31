@@ -14,10 +14,12 @@ var _UnknownRaspberryComponent = require('./UnknownRaspberryComponent');
 
 var _UnknownRaspberryComponent2 = _interopRequireDefault(_UnknownRaspberryComponent);
 
+var _index = require('../selectors/index');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = (0, _alpReactRedux.connect)(({ raspberries }) => ({
-  raspberries: raspberries.filter(r => !r.registered)
+exports.default = (0, _alpReactRedux.connect)(state => ({
+  raspberries: (0, _index.unknonwnSelector)(state)
 }))(({ raspberries }) => {
   if (!raspberries.length) {
     return null;

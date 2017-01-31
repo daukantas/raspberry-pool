@@ -86,6 +86,11 @@ exports.default = (0, _alpReactRedux.connect)(null, // { raspberries:  },
             _react2.default.createElement('span', { className: 'status' })
           ),
           raspberry.data.name
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          raspberry.data.organisation
         )
       ),
       _react2.default.createElement(_SpinnerComponent2.default, { active: raspberry.saving }),

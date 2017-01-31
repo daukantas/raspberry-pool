@@ -7,6 +7,7 @@ import Spinner from '../../common/components/SpinnerComponent';
 import { registerUnknown } from '../actions/raspberry';
 import type { RaspberryType } from '../types';
 import type { RegisterUnknownFunctionType } from '../actions/raspberry';
+import { ownerOfflineSelector } from '../selectors/index';
 
 type PropsType = {
   user: UserBrowserType,
@@ -16,9 +17,8 @@ type PropsType = {
 };
 
 export default connect(
-  ({ context: { state: { user } }, raspberries }) => ({
-    user,
-    offlineRaspberries: raspberries.filter(r => r.registered && !r.online),
+  (state) => ({
+    ownerOfflineRaspberries: ownerOfflineSelector(state),
   }),
   { registerUnknown },
 )(class UnknownRaspberryComponent extends Component {
@@ -30,7 +30,7 @@ export default connect(
   }
 
   render(): ReactNodeType {
-    const { user, raspberry, offlineRaspberries, registerUnknown } = this.props;
+    const { raspberry, ownerOfflineRaspberries, registerUnknown } = this.props;
 
     return (
       <div className="raspberry unknown">
@@ -71,7 +71,7 @@ export default connect(
                 <T id="unknownRaspberry.add" />
               </label>
             </div>
-            {!offlineRaspberries.length ? '' : [
+            {!ownerOfflineRaspberries.length ? '' : [
               <div key="addToExisting" className="input radio">
                 <input
                   id={`add-to-existing-raspberry-${raspberry.id}`}
@@ -105,7 +105,7 @@ export default connect(
               onChange={(e) => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })}
             >
               {!this.state.id && <option key="__empty" />}
-              {offlineRaspberries.filter(r => r.data.owner === user.id).map(r => (
+              {ownerOfflineRaspberries.map(r => (
                 <option key={r.id} value={r.id}>{r.data.name}</option>
               ))}
             </select>

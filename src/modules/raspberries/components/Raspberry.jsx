@@ -15,7 +15,7 @@ type PropsType = {
 
 export default connect(
   null, // { raspberries:  },
-  { changeConfig, }
+  { changeConfig }
 )(class Raspberry extends Component {
   constructor(props: PropsType) {
     super(props);
@@ -61,9 +61,12 @@ export default connect(
               <span className="icon" />
               <span className="status" />
             </span>
-
             {raspberry.data.name}
           </h2>
+
+          <div>
+            {raspberry.data.organisation}
+          </div>
         </div>
         <Spinner active={raspberry.saving} />
 

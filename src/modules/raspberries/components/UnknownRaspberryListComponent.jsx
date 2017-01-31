@@ -1,13 +1,14 @@
 import { connect } from 'alp-react-redux/src';
 import UnknownRaspberry from './UnknownRaspberryComponent';
 import type { RaspberryType } from '../types';
+import { unknonwnSelector } from '../selectors/index';
 
 type PropsType = {
   raspberries: Array<RaspberryType>,
 };
 
-export default connect(({ raspberries }) => ({
-  raspberries: raspberries.filter(r => !r.registered),
+export default connect((state) => ({
+  raspberries: unknonwnSelector(state),
 }))(({ raspberries }: PropsType) => {
   if (!raspberries.length) {
     return null;

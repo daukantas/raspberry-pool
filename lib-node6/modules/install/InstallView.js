@@ -60,9 +60,9 @@ exports.default = (0, _alpReactRedux.connect)(({ context: { state: { user } } })
         _react2.default.createElement(
           'pre',
           null,
-          `curl ${ hostname }/install-scripts/install-raspberry.sh | `,
+          `curl ${hostname}/install-scripts/install-raspberry.sh | `,
           'USER_ID=',
-          user ? `'${ user.id }'` : _react2.default.createElement(
+          user ? `'${user.id}'` : _react2.default.createElement(
             _reactAlpLink2.default,
             { to: 'login' },
             'Please login !'
@@ -84,13 +84,13 @@ exports.default = (0, _alpReactRedux.connect)(({ context: { state: { user } } })
           'sudo npm install -g raspberry-client',
           '\n',
           'sudo rpi-cli install --userId=',
-          user ? `'${ user.id }'` : _react2.default.createElement(
+          user ? `'${user.id}'` : _react2.default.createElement(
             _reactAlpLink2.default,
             { to: 'login' },
             'Please login !'
           ),
           ' --host=',
-          `'${ hostname }'`,
+          `'${hostname}'`,
           ' --port=',
           websocketPort
         )

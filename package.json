@@ -37,6 +37,7 @@
     "react-alp-login": "^0.4.1",
     "react-alp-subscribe-container": "^0.3.1",
     "react-alp-translate": "^0.3.1",
+    "reselect": "^2.5.4",
     "semver": "^5.3.0",
     "turaco-styl": "0.14.0"
   },

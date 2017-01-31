@@ -11,12 +11,13 @@ type PropsType = {
   raspberries: Array<RaspberryType>,
   sendAction: SendActionFunctionType,
   flat: ?boolean,
+  className: ?string,
 };
 
 export default connect(
   null,
   { sendAction },
-)(({ raspberries, sendAction, flat }: PropsType) => {
+)(({ raspberries, sendAction, flat, className }: PropsType) => {
   if (!raspberries || !raspberries.length) {
     return <div className={s.actions} />;
   }

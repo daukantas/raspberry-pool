@@ -20,11 +20,12 @@ var _SpinnerComponent2 = _interopRequireDefault(_SpinnerComponent);
 
 var _raspberry = require('../actions/raspberry');
 
+var _index = require('../selectors/index');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = (0, _alpReactRedux.connect)(({ context: { state: { user } }, raspberries }) => ({
-  user,
-  offlineRaspberries: raspberries.filter(r => r.registered && !r.online)
+exports.default = (0, _alpReactRedux.connect)(state => ({
+  ownerOfflineRaspberries: (0, _index.ownerOfflineSelector)(state)
 }), { registerUnknown: _raspberry.registerUnknown })(class UnknownRaspberryComponent extends _react.Component {
 
   // eslint-disable-next-line no-useless-constructor
@@ -34,7 +35,7 @@ exports.default = (0, _alpReactRedux.connect)(({ context: { state: { user } }, r
   }
 
   render() {
-    const { user, raspberry, offlineRaspberries, registerUnknown } = this.props;
+    const { raspberry, ownerOfflineRaspberries, registerUnknown } = this.props;
 
     return _react2.default.createElement(
       'div',
@@ -113,7 +114,7 @@ exports.default = (0, _alpReactRedux.connect)(({ context: { state: { user } }, r
               _react2.default.createElement(_reactAlpTranslate2.default, { id: 'unknownRaspberry.add' })
             )
           ),
-          !offlineRaspberries.length ? '' : [_react2.default.createElement(
+          !ownerOfflineRaspberries.length ? '' : [_react2.default.createElement(
             'div',
             { key: 'addToExisting', className: 'input radio' },
             _react2.default.createElement('input', {
@@ -154,7 +155,7 @@ exports.default = (0, _alpReactRedux.connect)(({ context: { state: { user } }, r
               onChange: e => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })
             },
             !this.state.id && _react2.default.createElement('option', { key: '__empty' }),
-            offlineRaspberries.filter(r => r.data.owner === user.id).map(r => _react2.default.createElement(
+            ownerOfflineRaspberries.map(r => _react2.default.createElement(
               'option',
               { key: r.id, value: r.id },
               r.data.name
