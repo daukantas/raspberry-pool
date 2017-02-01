@@ -3,7 +3,7 @@
 sh boot.sh disable
 
 yes | sudo apt-get update
-APT_LISTCHANGES_FRONTEND=none sudo apt-get upgrade -y
+env DEBIAN_FRONTEND=noninteractive APT_LISTCHANGES_FRONTEND=none sudo apt-get upgrade -y -o Dpkg::Options::='--force-confdef' -o Dpkg::Options::='--force-confold'
 
 sudo apt-get install -y tmux
 
