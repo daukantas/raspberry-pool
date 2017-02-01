@@ -80,8 +80,7 @@ displayTitle 'Install dependencies'
 # supervisor: keep node client alive
 # livestreamer: display videos from internet
 # omxplayer: display videos
-# unattended-upgrades: automatically install updates
-sudo apt-get install -y xorg git unclutter xdotool supervisor xinit openbox livestreamer omxplayer unattended-upgrades
+sudo apt-get install -y xorg git unclutter xdotool supervisor xinit openbox livestreamer omxplayer
 
 ##
 # Install raspi2png
