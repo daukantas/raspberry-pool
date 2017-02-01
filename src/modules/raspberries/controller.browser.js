@@ -1,5 +1,5 @@
 import { newController } from 'alp';
-import * as raspberriesDescriptor from './';
+import * as raspberriesDescriptor from './descriptor';
 
 export default newController({
   index(ctx) {

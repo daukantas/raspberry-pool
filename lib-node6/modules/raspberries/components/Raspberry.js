@@ -8,9 +8,7 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _function = require('react-pure-render/function');
-
-var _function2 = _interopRequireDefault(_function);
+var _alpReactRedux = require('alp-react-redux');
 
 var _reactAlpTranslate = require('react-alp-translate');
 
@@ -20,22 +18,27 @@ var _SpinnerComponent = require('../../common/components/SpinnerComponent');
 
 var _SpinnerComponent2 = _interopRequireDefault(_SpinnerComponent);
 
-var _ActionsComponent = require('./raspberry/ActionsComponent');
+var _Actions = require('./raspberry/Actions');
 
-var _ActionsComponent2 = _interopRequireDefault(_ActionsComponent);
+var _Actions2 = _interopRequireDefault(_Actions);
+
+var _raspberry = require('../actions/raspberry');
+
+var _Raspberry = require('./Raspberry.styl');
+
+var _Raspberry2 = _interopRequireDefault(_Raspberry);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-class RaspberryComponent extends _react.Component {
-
+exports.default = (0, _alpReactRedux.connect)(null, // { raspberries:  },
+{ changeConfig: _raspberry.changeConfig })(class Raspberry extends _react.Component {
   constructor(props) {
     super(props);
-    this.shouldComponentUpdate = _function2.default;
     this.state = {};
   }
 
   render() {
-    const { raspberry, changeConfig, sendAction } = this.props;
+    const { raspberry, changeConfig } = this.props;
 
     let url;
     let display;
@@ -83,6 +86,11 @@ class RaspberryComponent extends _react.Component {
             _react2.default.createElement('span', { className: 'status' })
           ),
           raspberry.data.name
+        ),
+        _react2.default.createElement(
+          'div',
+          null,
+          raspberry.data.organisation
         )
       ),
       _react2.default.createElement(_SpinnerComponent2.default, { active: raspberry.saving }),
@@ -95,7 +103,11 @@ class RaspberryComponent extends _react.Component {
           !raspberry.online ? _react2.default.createElement(_reactAlpTranslate2.default, { id: 'raspberry.offline' }) : `${raspberry.externalIp} | ${raspberry.ip}`
         )
       ),
-      _react2.default.createElement(_ActionsComponent2.default, { raspberries: [raspberry], sendAction: sendAction }),
+      _react2.default.createElement(
+        'div',
+        { className: _Raspberry2.default.actions },
+        _react2.default.createElement(_Actions2.default, { raspberries: [raspberry] })
+      ),
       _react2.default.createElement(
         'fieldset',
         null,
@@ -196,11 +208,5 @@ class RaspberryComponent extends _react.Component {
       )
     );
   }
-}
-exports.default = RaspberryComponent;
-RaspberryComponent.propTypes = {
-  raspberry: _react.PropTypes.object.isRequired,
-  changeConfig: _react.PropTypes.func.isRequired,
-  sendAction: _react.PropTypes.func.isRequired
-};
-//# sourceMappingURL=RaspberryComponent.js.map
+});
+//# sourceMappingURL=Raspberry.js.map

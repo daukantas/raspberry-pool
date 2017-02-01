@@ -1,20 +1,36 @@
-import { PureComponent, PropTypes } from 'react';
+import { Component } from 'react';
+import { connect } from 'alp-react-redux/src';
 import T from 'react-alp-translate/src';
-import User from 'react-alp-user/src';
+import type { UserBrowserType } from 'alp-auth/src/types';
+import type { ReactNodeType } from 'alp-react-redux/src/types';
 import Spinner from '../../common/components/SpinnerComponent';
+import { registerUnknown } from '../actions/raspberry';
+import type { RaspberryType } from '../types';
+import type { RegisterUnknownFunctionType } from '../actions/raspberry';
+import { ownerOfflineSelector } from '../selectors/index';
 
-export default class UnknownRaspberryComponent extends PureComponent {
-  static propTypes = {
-    raspberry: PropTypes.object.isRequired,
-    offlineRaspberries: PropTypes.array.isRequired,
-    registerUnknown: PropTypes.func.isRequired,
-    // sendAction: PropTypes.func.isRequired,
-  };
+type PropsType = {
+  user: UserBrowserType,
+  raspberry: RaspberryType,
+  offlineRaspberries: Array<RaspberryType>,
+  registerUnknown: RegisterUnknownFunctionType,
+};
 
+export default connect(
+  (state) => ({
+    ownerOfflineRaspberries: ownerOfflineSelector(state),
+  }),
+  { registerUnknown },
+)(class UnknownRaspberryComponent extends Component {
   state = {};
 
-  render() {
-    const { raspberry, registerUnknown, offlineRaspberries } = this.props;
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props: PropsType) {
+    super(props);
+  }
+
+  render(): ReactNodeType {
+    const { raspberry, ownerOfflineRaspberries, registerUnknown } = this.props;
 
     return (
       <div className="raspberry unknown">
@@ -51,9 +67,11 @@ export default class UnknownRaspberryComponent extends PureComponent {
                 checked={!this.state.addOrReplace}
                 onChange={(e) => this.setState({ addOrReplace: e.target.value, id: null })}
               />
-              <label htmlFor={`add-raspberry-${raspberry.id}`}><T id="unknownRaspberry.add" /></label>
+              <label htmlFor={`add-raspberry-${raspberry.id}`}>
+                <T id="unknownRaspberry.add" />
+              </label>
             </div>
-            {!offlineRaspberries.length ? '' : [
+            {!ownerOfflineRaspberries.length ? '' : [
               <div key="addToExisting" className="input radio">
                 <input
                   id={`add-to-existing-raspberry-${raspberry.id}`}
@@ -63,7 +81,9 @@ export default class UnknownRaspberryComponent extends PureComponent {
                   checked={this.state.addOrReplace === 'addToExisting'}
                   onChange={(e) => this.setState({ addOrReplace: e.target.value, id: null })}
                 />
-                <label htmlFor={`add-to-existing-raspberry-${raspberry.id}`}><T id="unknownRaspberry.addToExisting" /></label>
+                <label htmlFor={`add-to-existing-raspberry-${raspberry.id}`}>
+                  <T id="unknownRaspberry.addToExisting" />
+                </label>
               </div>,
               <div key="replace" className="input radio">
                 <input
@@ -74,21 +94,21 @@ export default class UnknownRaspberryComponent extends PureComponent {
                   checked={this.state.addOrReplace === 'replace'}
                   onChange={(e) => this.setState({ addOrReplace: e.target.value })}
                 />
-                <label htmlFor={`replace-raspberry-${raspberry.id}`}><T id="unknownRaspberry.replace" /></label>
+                <label htmlFor={`replace-raspberry-${raspberry.id}`}>
+                  <T id="unknownRaspberry.replace" />
+                </label>
               </div>,
             ]}
-            <User>{user => (
-              <select
-                disabled={!this.state.addOrReplace}
-                name="raspberry"
-                onChange={(e) => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })}
-              >
-                {!this.state.id && <option key="__empty" />}
-                {offlineRaspberries.filter(r => r.data.owner === user.id).map(r => (
-                  <option key={r.id} value={r.id}>{r.data.name}</option>
-                ))}
-              </select>
-            )}</User>
+            <select
+              disabled={!this.state.addOrReplace}
+              name="raspberry"
+              onChange={(e) => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })}
+            >
+              {!this.state.id && <option key="__empty" />}
+              {ownerOfflineRaspberries.map(r => (
+                <option key={r.id} value={r.id}>{r.data.name}</option>
+              ))}
+            </select>
           </div>
         </div>
 
@@ -119,4 +139,4 @@ export default class UnknownRaspberryComponent extends PureComponent {
                 }}>Blink</button>
         */
   }
-}
+});

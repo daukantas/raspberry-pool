@@ -1,22 +1,20 @@
-import React, { Component, PropTypes } from 'react';
-import shouldPureComponentUpdate from 'react-pure-render/function';
-import Raspberry from './RaspberryComponent';
+import { connect } from 'alp-react-redux/src';
+import Raspberry from './Raspberry';
+import type { RaspberryType } from '../types';
+import { registeredSelector } from '../selectors/index';
 
-export default class RaspberryListComponent extends Component {
-  static propTypes = {
-    raspberries: PropTypes.array.isRequired,
-    changeConfig: PropTypes.func.isRequired,
-    sendAction: PropTypes.func.isRequired,
-  };
+type PropsType = {
+  raspberries: Array<RaspberryType>,
+};
 
-  shouldComponentUpdate = shouldPureComponentUpdate;
-
-  render() {
-    const { raspberries, changeConfig, sendAction } = this.props;
-    return (<ul className="raspberry-list">
-      {raspberries.map(raspberry => <li key={raspberry.id} className="raspberry-item">
-        <Raspberry raspberry={raspberry} changeConfig={changeConfig} sendAction={sendAction} />
-      </li>)}
-    </ul>);
-  }
-}
+export default connect(
+  state => ({ raspberries: registeredSelector(state) }),
+)(({ raspberries }: PropsType) => (
+  <ul className="raspberry-list">
+    {raspberries.map(raspberry => (
+      <li key={raspberry.id} className="raspberry-item">
+        <Raspberry raspberry={raspberry} />
+      </li>
+    ))}
+  </ul>
+));

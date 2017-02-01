@@ -5,6 +5,7 @@ common:
     login: "Connexion"
     logout: "Deconnexion"
     installClientLink: "Installer le client"
+    raspberriesLink: "Vos raspberries"
 
   home.notConnected.title: "Gérez votre pool de raspberry depuis un endroit unique !"
 

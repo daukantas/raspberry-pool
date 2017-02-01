@@ -1,8 +1,8 @@
 'use strict';
 
-var _alp = require('alp');
+var _alpBrowser = require('alp-browser');
 
-var _alp2 = _interopRequireDefault(_alp);
+var _alpBrowser2 = _interopRequireDefault(_alpBrowser);
 
 var _alpLimosa = require('alp-limosa');
 
@@ -33,7 +33,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; } /* global window, document */
 
 
-const app = new _alp2.default();
+const app = new _alpBrowser2.default();
 
 app.start(_asyncToGenerator(function* () {
   // init
@@ -45,7 +45,7 @@ app.start(_asyncToGenerator(function* () {
   app.catchErrors();
   app.use((0, _alpLimosa2.default)(_routerBuilder2.default, _controllers2.default)(app));
 
-  if (window.MODULE_IDENTIFIER) {
+  if (window.MODULE_IDENTIFIER && window.MODULE_IDENTIFIER !== 'install') {
     yield app.initialRender(moduleDescriptors[window.MODULE_IDENTIFIER], window.initialData);
   }
 

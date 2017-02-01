@@ -1,3 +1,12 @@
+<a name="5.4.0"></a>
+# [5.4.0](https://github.com/christophehurpeau/raspberry-pool/compare/v5.3.1...v5.4.0) (2017-02-01)
+
+
+### Bug Fixes
+
+* remove logo for now ([befe2ab](https://github.com/christophehurpeau/raspberry-pool/commit/befe2ab))
+
+
 ### v5.3.1
 
 - [`d77c878`](https://github.com/christophehurpeau/raspberry-pool/commit/d77c878ed6e27cbbc98bd42f6de687fd796c1439) fix(scripts): apt-get install missing -y (Christophe Hurpeau)

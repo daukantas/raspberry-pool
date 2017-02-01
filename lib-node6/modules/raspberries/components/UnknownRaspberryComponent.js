@@ -8,29 +8,34 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _alpReactRedux = require('alp-react-redux');
+
 var _reactAlpTranslate = require('react-alp-translate');
 
 var _reactAlpTranslate2 = _interopRequireDefault(_reactAlpTranslate);
-
-var _reactAlpUser = require('react-alp-user');
-
-var _reactAlpUser2 = _interopRequireDefault(_reactAlpUser);
 
 var _SpinnerComponent = require('../../common/components/SpinnerComponent');
 
 var _SpinnerComponent2 = _interopRequireDefault(_SpinnerComponent);
 
+var _raspberry = require('../actions/raspberry');
+
+var _index = require('../selectors/index');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-class UnknownRaspberryComponent extends _react.PureComponent {
-  constructor(...args) {
-    var _temp;
+exports.default = (0, _alpReactRedux.connect)(state => ({
+  ownerOfflineRaspberries: (0, _index.ownerOfflineSelector)(state)
+}), { registerUnknown: _raspberry.registerUnknown })(class UnknownRaspberryComponent extends _react.Component {
 
-    return _temp = super(...args), this.state = {}, _temp;
+  // eslint-disable-next-line no-useless-constructor
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
   render() {
-    const { raspberry, registerUnknown, offlineRaspberries } = this.props;
+    const { raspberry, ownerOfflineRaspberries, registerUnknown } = this.props;
 
     return _react2.default.createElement(
       'div',
@@ -109,7 +114,7 @@ class UnknownRaspberryComponent extends _react.PureComponent {
               _react2.default.createElement(_reactAlpTranslate2.default, { id: 'unknownRaspberry.add' })
             )
           ),
-          !offlineRaspberries.length ? '' : [_react2.default.createElement(
+          !ownerOfflineRaspberries.length ? '' : [_react2.default.createElement(
             'div',
             { key: 'addToExisting', className: 'input radio' },
             _react2.default.createElement('input', {
@@ -143,22 +148,18 @@ class UnknownRaspberryComponent extends _react.PureComponent {
             )
           )],
           _react2.default.createElement(
-            _reactAlpUser2.default,
-            null,
-            user => _react2.default.createElement(
-              'select',
-              {
-                disabled: !this.state.addOrReplace,
-                name: 'raspberry',
-                onChange: e => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })
-              },
-              !this.state.id && _react2.default.createElement('option', { key: '__empty' }),
-              offlineRaspberries.filter(r => r.data.owner === user.id).map(r => _react2.default.createElement(
-                'option',
-                { key: r.id, value: r.id },
-                r.data.name
-              ))
-            )
+            'select',
+            {
+              disabled: !this.state.addOrReplace,
+              name: 'raspberry',
+              onChange: e => this.setState({ addOrReplace: this.state.addOrReplace || 'replace', id: e.target.value })
+            },
+            !this.state.id && _react2.default.createElement('option', { key: '__empty' }),
+            ownerOfflineRaspberries.map(r => _react2.default.createElement(
+              'option',
+              { key: r.id, value: r.id },
+              r.data.name
+            ))
           )
         )
       ),
@@ -189,11 +190,5 @@ class UnknownRaspberryComponent extends _react.PureComponent {
             }}>Blink</button>
     */
   }
-}
-exports.default = UnknownRaspberryComponent;
-UnknownRaspberryComponent.propTypes = {
-  raspberry: _react.PropTypes.object.isRequired,
-  offlineRaspberries: _react.PropTypes.array.isRequired,
-  registerUnknown: _react.PropTypes.func.isRequired
-};
+});
 //# sourceMappingURL=UnknownRaspberryComponent.js.map
