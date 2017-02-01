@@ -1,3 +1,13 @@
+<a name="5.4.1"></a>
+## [5.4.1](https://github.com/christophehurpeau/raspberry-pool/compare/v5.4.0...v5.4.1) (2017-02-01)
+
+
+### Bug Fixes
+
+* missing webpack.config.js ([5412a2b](https://github.com/christophehurpeau/raspberry-pool/commit/5412a2b))
+* upgrade command doesn't ask for confirmation ([5f018a4](https://github.com/christophehurpeau/raspberry-pool/commit/5f018a4))
+
+
 <a name="5.4.0"></a>
 # [5.4.0](https://github.com/christophehurpeau/raspberry-pool/compare/v5.3.1...v5.4.0) (2017-02-01)
 
